@@ -1143,7 +1143,7 @@ const Footer = ()=>{
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("a", {
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
                                         className: "bg-white text-blue-600 font-semibold px-5 py-2.5 rounded-xl hover:bg-blue-50 transition-all duration-300 hover:scale-105 shadow-lg",
-                                        children: "Start Your Journey"
+                                        children: "Start Your Journey →"
                                     }, void 0, false, {
                                         fileName: "[project]/components/Layout/Footer.jsx",
                                         lineNumber: 133,

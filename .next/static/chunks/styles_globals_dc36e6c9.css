@@ -1986,6 +1986,10 @@ body {
   --tw-gradient-to: rgba(88, 28, 135, .9) var(--tw-gradient-to-position);
 }
 
+.to-slate-100 {
+  --tw-gradient-to: #f1f5f9 var(--tw-gradient-to-position);
+}
+
 .to-slate-50 {
   --tw-gradient-to: #f8fafc var(--tw-gradient-to-position);
 }
@@ -2000,10 +2004,6 @@ body {
 
 .to-white {
   --tw-gradient-to: #fff var(--tw-gradient-to-position);
-}
-
-.to-slate-100 {
-  --tw-gradient-to: #f1f5f9 var(--tw-gradient-to-position);
 }
 
 .fill-current {
