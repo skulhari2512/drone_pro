@@ -1,10 +1,5 @@
 {
   "/": "pages/index.js",
   "/_app": "pages/_app.js",
-  "/_document": "pages/_document.js",
-  "/how-it-works": "pages/how-it-works.js",
-  "/industry-uses": "pages/industry-uses.js",
-  "/plan": "pages/plan.js",
-  "/quiz": "pages/quiz.js",
-  "/training": "pages/training.js"
+  "/_document": "pages/_document.js"
 }
