@@ -1,5 +1,4 @@
 import { NextSeo } from 'next-seo';
-import Layout from '../components/Layout/Layout';
 import FAQ from '../components/pages/FAQ';
 
 export default function FAQPage() {
@@ -24,7 +23,7 @@ export default function FAQPage() {
 }
 
 FAQPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return page;
 };
 
 export async function getStaticProps() {
