@@ -2,5 +2,6 @@
   "/": "pages/index.js",
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/quiz": "pages/quiz.js"
+  "/industry-uses": "pages/industry-uses.js",
+  "/training": "pages/training.js"
 }
