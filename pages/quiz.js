@@ -25,10 +25,6 @@ export default function QuizPage() {
   );
 }
 
-// Apply layout to this page
-QuizPage.getLayout = function getLayout(page) {
-  return {page};
-};
 
 // Use Static Generation - quiz logic is client-side
 export async function getStaticProps() {

@@ -24,7 +24,7 @@ export default function TrainingPage() {
 }
 
 TrainingPage.getLayout = function getLayout(page) {
-  return {page};
+  return page;
 };
 
 export async function getStaticProps() {

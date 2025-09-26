@@ -44,10 +44,6 @@ export default function HomePage({ data }) {
   );
 }
 
-// Apply layout to this page
-HomePage.getLayout = function getLayout(page) {
-  return {page};
-};
 
 // Static Site Generation with Incremental Static Regeneration
 export async function getStaticProps() {

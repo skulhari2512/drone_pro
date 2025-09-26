@@ -25,7 +25,7 @@ export default function IndustryUsesPage() {
 }
 
 IndustryUsesPage.getLayout = function getLayout(page) {
-  return {page};
+  return page;
 };
 
 export async function getStaticProps() {

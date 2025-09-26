@@ -23,7 +23,7 @@ export default function FAQPage() {
 }
 
 FAQPage.getLayout = function getLayout(page) {
-  return {page};
+  return page;
 };
 
 export async function getStaticProps() {

@@ -24,10 +24,6 @@ export default function ContactPage() {
   );
 }
 
-// Apply layout to this page
-ContactPage.getLayout = function getLayout(page) {
-  return {page};
-};
 
 // Use Static Generation for contact page (it doesn't change often)
 export async function getStaticProps() {
