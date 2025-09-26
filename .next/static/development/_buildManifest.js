@@ -8,6 +8,12 @@ self.__BUILD_MANIFEST = {
   "/industry-uses": [
     "./static/chunks/pages/industry-uses.js"
   ],
+  "/plan": [
+    "./static/chunks/pages/plan.js"
+  ],
+  "/quiz": [
+    "./static/chunks/pages/quiz.js"
+  ],
   "/training": [
     "./static/chunks/pages/training.js"
   ],
