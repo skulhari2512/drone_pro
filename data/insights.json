@@ -1,0 +1,48 @@
+{
+  "economicImpact": {
+    "gdpIncrease": 14.5,
+    "unit": "billion AUD",
+    "annualSavings": 9.3,
+    "jobsCreated": 5500,
+    "timeframe": "annually for next 20 years"
+  },
+  "marketProjections": {
+    "annualFlights2043": 60.4,
+    "unit": "million",
+    "transportLogistics": 77,
+    "percentOfMarket": true
+  },
+  "growthDrivers": [
+    "Regulatory framework maturation",
+    "Technology advancement and cost reduction",
+    "Industry adoption acceleration",
+    "Infrastructure development",
+    "Skills development and training programs"
+  ],
+  "sectorUseCases": {
+    "construction": [
+      "Progress monitoring",
+      "Site surveying",
+      "Safety inspections",
+      "3D modeling"
+    ],
+    "agriculture": [
+      "Crop monitoring",
+      "Precision application",
+      "Yield optimization",
+      "Field mapping"
+    ],
+    "logistics": [
+      "Last-mile delivery",
+      "Inventory management",
+      "Route optimization",
+      "Warehouse automation"
+    ],
+    "inspection": [
+      "Infrastructure assessment",
+      "Asset monitoring",
+      "Maintenance planning",
+      "Safety compliance"
+    ]
+  }
+}

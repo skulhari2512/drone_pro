@@ -1,0 +1,95 @@
+{
+  "slug": "industry-uses",
+  "title": "Industry Applications",
+  "summary": "Comprehensive guide to drone applications across major industry sectors",
+  "sections": [
+    {
+      "heading": "Construction",
+      "body": [
+        "Fortnightly fly-overs to monitor progress and ensure project timelines",
+        "3D modeling and photogrammetry for accurate site documentation",
+        "Safety inspections and compliance monitoring"
+      ],
+      "bullets": [
+        "Progress monitoring and reporting",
+        "Site surveying and mapping",
+        "Safety and compliance documentation"
+      ]
+    },
+    {
+      "heading": "Asset Inspection",
+      "body": [
+        "Inspect bridges, communication towers, and assets safely",
+        "Thermal imaging for infrastructure analysis",
+        "Detailed visual documentation for maintenance planning"
+      ],
+      "bullets": [
+        "Bridge and tower inspections",
+        "Thermal analysis capabilities",
+        "Maintenance planning support"
+      ]
+    },
+    {
+      "heading": "Agriculture",
+      "body": [
+        "Precision application of chemicals to optimize crop yields",
+        "NDVI mapping for crop health analysis",
+        "Automated field monitoring and data collection"
+      ],
+      "bullets": [
+        "Crop health monitoring",
+        "Precision agriculture applications",
+        "Yield optimization strategies"
+      ]
+    },
+    {
+      "heading": "Environmental Mapping",
+      "body": [
+        "3D modeling of forests and waterways for conservation efforts",
+        "Environmental impact assessments",
+        "Wildlife monitoring and habitat analysis"
+      ],
+      "bullets": [
+        "Conservation project support",
+        "Environmental impact documentation",
+        "Habitat monitoring solutions"
+      ]
+    },
+    {
+      "heading": "Mining and Quarry",
+      "body": [
+        "Safe and fast stockpile volume calculations",
+        "Site monitoring and safety compliance",
+        "Automated inventory management"
+      ],
+      "bullets": [
+        "Stockpile volume calculations",
+        "Safety compliance monitoring",
+        "Operational efficiency optimization"
+      ]
+    },
+    {
+      "heading": "Film and TV",
+      "body": [
+        "Establishing shots, tracking shots, and dramatic reveals",
+        "High-resolution cinematic footage",
+        "Creative aerial cinematography solutions"
+      ],
+      "bullets": [
+        "Cinematic aerial footage",
+        "Creative shot compositions",
+        "Professional film production support"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Which industry has the highest earning potential?",
+      "a": "Asset inspection and construction typically offer the highest hourly rates, ranging from $160-$400+ per hour for experienced pilots."
+    },
+    {
+      "q": "What equipment is needed for different industries?",
+      "a": "Equipment requirements vary by industry. Construction may need mapping capabilities, while film requires high-quality cameras. We provide detailed equipment recommendations in your personalized report."
+    }
+  ]
+}

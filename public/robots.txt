@@ -1,0 +1,12 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /plan
+Disallow: /quiz
+
+# Host
+Host: https://dronecareerpro.com
+
+# Sitemaps
+Sitemap: https://dronecareerpro.com/sitemap.xml

@@ -1,0 +1,129 @@
+{
+  "slug": "training",
+  "title": "Training & Legal Requirements",
+  "summary": "Complete guide to drone licensing, legal requirements, and career development",
+  "replCourses": [
+    {
+      "title": "Remote Pilot Licence (RePL) - In-Class",
+      "type": "Professional",
+      "duration": "5 days intensive",
+      "price": "$2,500 - $3,500",
+      "approval": "CASA Approved",
+      "description": "Most popular licence option for individual pilots",
+      "subtitle": "5-day course covering theory and practical training",
+      "validity": "No expiry date - lifetime certification",
+      "features": [
+        "In-Class (5 Days Intensive) — $2,500–$3,500",
+        "Lifetime certification",
+        "Full course materials + CASA theory prep",
+        "Theory and practical components",
+        "Guidance on using your licence commercially"
+      ]
+    },
+    {
+      "title": "Remote Pilot Licence (RePL) - Online",
+      "type": "Professional",
+      "duration": "Self-paced learning",
+      "price": "$1,300 - $1,700",
+      "approval": "CASA Approved",
+      "description": "Perfect for busy professionals and remote learners",
+      "subtitle": "Comprehensive online course with flexible scheduling",
+      "validity": "No expiry date - lifetime certification",
+      "features": [
+        "Online (Self-Paced) — $1,300–$1,700",
+        "Lifetime certification",
+        "Full course materials + CASA theory prep",
+        "Theory and practical components",
+        "Guidance on using your licence commercially"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "heading": "RPA Operator Accreditation",
+      "body": [
+        "Starting point for new drone operators",
+        "Fly commercially without full licence requirements",
+        "Register drone and complete CASA accreditation process"
+      ],
+      "bullets": [
+        "Entry-level commercial operation",
+        "Drone registration required",
+        "CASA accreditation process",
+        "Suitable for drones under 2kg"
+      ]
+    },
+    {
+      "heading": "Remote Pilot Licence (RePL)",
+      "body": [
+        "Most comprehensive licence option for drone pilots",
+        "Available in both in-class and online formats",
+        "No expiry date - lifetime certification",
+        "Enables commercial operations with enhanced privileges"
+      ],
+      "bullets": [
+        "Two flexible training formats available",
+        "Theory and practical components included",
+        "Lifetime certification with no renewal required",
+        "Guidance on commercial licence usage",
+        "Full course materials + CASA theory preparation",
+        "Enhanced operational privileges vs RPA accreditation"
+      ]
+    },
+    {
+      "heading": "Remotely Piloted Aircraft Operator's Certificate (ReOC)",
+      "body": [
+        "Legally required to operate a drone business and employ other pilots",
+        "Unlocks advanced operational approvals (night, EVLOS, BVLOS, etc.)",
+        "Flexible operations under your business name"
+      ],
+      "bullets": [
+        "Legally required to operate a drone business and employ other pilots",
+        "End-to-end guidance with CASA documentation and compliance",
+        "Support through submission, feedback, and approval",
+        "Enhanced operational privileges",
+        "Greater industry recognition"
+      ]
+    },
+    {
+      "heading": "Australian Drone Laws",
+      "body": [
+        "Fly no higher than 120 metres (400 feet)",
+        "Maintain 30 metres distance from people",
+        "Avoid populous areas like beaches",
+        "Visual line of sight required",
+        "Daytime flying only",
+        "5.5km from airports"
+      ],
+      "bullets": [
+        "120m maximum altitude",
+        "30m people separation",
+        "Visual line of sight",
+        "Daytime operations only",
+        "Airport exclusion zones"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Which licence should I get first?",
+      "a": "For most people, the RePL (Remote Pilot Licence) is the best starting point. It's comprehensive, doesn't expire, and opens up the most opportunities. Choose in-class for hands-on learning or online for flexibility."
+    },
+    {
+      "q": "What's the difference between in-class and online RePL training?",
+      "a": "In-class training offers hands-on practical experience with direct instructor interaction over 5 intensive days ($2,500-$3,500). Online training provides flexibility with self-paced learning and virtual components ($1,800-$2,800). Both result in the same CASA-approved certification."
+    },
+    {
+      "q": "How long does training take?",
+      "a": "RePL in-class training takes 5 intensive days. Online RePL is self-paced, typically completed in 2-4 weeks depending on your schedule. RPA accreditation can be completed online in a few hours."
+    },
+    {
+      "q": "What are the legal penalties for unlicensed flying?",
+      "a": "Flying commercially without proper accreditation can result in fines up to $11,100. Always ensure you have appropriate licensing before commercial operations."
+    },
+    {
+      "q": "Can I switch between in-class and online training?",
+      "a": "Contact our training team to discuss switching options. Some flexibility may be available depending on your progress and course availability."
+    }
+  ]
+}

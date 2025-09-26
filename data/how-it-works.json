@@ -1,0 +1,86 @@
+{
+  "slug": "how-it-works",
+  "title": "How It Works",
+  "summary": "Professional drone training pathway - from quick assessment to certification and earning potential",
+  "sections": [
+    {
+      "heading": "Quick Assessment",
+      "body": [
+        "Take our comprehensive drone career assessment to identify your optimal training path",
+        "Answer questions about your background, interests, and career goals",
+        "Get matched with the right industry focus and certification level"
+      ],
+      "bullets": [
+        "5-minute comprehensive questionnaire",
+        "Industry-specific pathway recommendations",
+        "Instant personalized results"
+      ]
+    },
+    {
+      "heading": "Submit Your Answers",
+      "body": [
+        "Complete your personalized assessment with detailed responses",
+        "Our system analyzes your experience and goals",
+        "Advanced matching algorithm considers your unique profile"
+      ],
+      "bullets": [
+        "Secure data processing",
+        "Professional career analysis",
+        "Tailored recommendations"
+      ]
+    },
+    {
+      "heading": "Instant Personalized Report",
+      "body": [
+        "Receive detailed career pathway recommendations",
+        "Industry-specific training requirements and opportunities",
+        "Comprehensive earning potential analysis"
+      ],
+      "bullets": [
+        "Detailed industry analysis",
+        "Training modality comparisons",
+        "ROI calculations and projections"
+      ]
+    },
+    {
+      "heading": "Course Matching & Pricing",
+      "body": [
+        "Get matched with certified training providers",
+        "Compare course options and pricing",
+        "Access exclusive training packages and discounts"
+      ],
+      "bullets": [
+        "Comprehensive training solutions",
+        "Streamlined certification process",
+        "Industry-recognised qualifications"
+      ]
+    },
+    {
+      "heading": "Next Steps",
+      "body": [
+        "Download your comprehensive career plan",
+        "Connect with industry experts and mentors",
+        "Begin your drone training journey"
+      ],
+      "bullets": [
+        "📄 PDF career plan download",
+        "🤝 Expert consultation booking",
+        "🚀 Training enrollment assistance"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "How long does the assessment take?",
+      "a": "The comprehensive assessment takes approximately 1-3 minutes to complete. Our system provides instant results upon submission."
+    },
+    {
+      "q": "Is the career report really free?",
+      "a": "Yes, your personalized drone career report is completely free. We believe everyone should have access to quality career guidance."
+    },
+    {
+      "q": "What industries are covered?",
+      "a": "We cover all major drone industry sectors including construction, agriculture, film/TV, asset inspection, real estate, mining, and emergency services."
+    }
+  ]
+}

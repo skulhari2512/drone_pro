@@ -1,0 +1,38 @@
+{
+  "whyNow": {
+    "title": "Why Start Your Drone Career Now?",
+    "content": [
+      "The Transport & Logistics sector is experiencing unprecedented growth, representing ~77% of the drone market by 2043.",
+      "Early adopters are positioning themselves for maximum career opportunities as the industry scales.",
+      "Current market conditions offer the perfect entry point with established training pathways and growing demand.",
+      "Government support and regulatory clarity provide a stable foundation for career development.",
+      "The next 5 years will see exponential growth - those who start now will have significant competitive advantages."
+    ],
+    "statistics": {
+      "marketGrowth": "77% of drone operations by 2043",
+      "jobsCreated": "5,500 full-time positions annually",
+      "economicImpact": "$14.5B GDP increase",
+      "industryGrowth": "3% weekly growth rate"
+    }
+  },
+  "rampUp": {
+    "title": "Transport & Logistics Ramp-Up",
+    "phases": [
+      {
+        "phase": "Current (2025)",
+        "description": "Foundation building with early commercial applications",
+        "opportunities": "Entry-level positions, training programs, pilot projects"
+      },
+      {
+        "phase": "Near-term (2026-2028)",
+        "description": "Rapid scaling of logistics operations",
+        "opportunities": "Specialized roles, management positions, business opportunities"
+      },
+      {
+        "phase": "Long-term (2029-2043)",
+        "description": "Full industry maturation and integration",
+        "opportunities": "Senior expertise roles, consultancy, advanced specializations"
+      }
+    ]
+  }
+}
