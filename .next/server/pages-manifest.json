@@ -1,7 +1,1 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/quiz": "pages/quiz.js"
-}
+{"/api/email":"pages/api/email.js","/api/send-email":"pages/api/send-email.js","/_app":"pages/_app.js","/_document":"pages/_document.js","/_error":"pages/_error.js","/api/contact":"pages/api/contact.js","/contact":"pages/contact.js","/faq":"pages/faq.js","/":"pages/index.js","/how-it-works":"pages/how-it-works.js","/industry-uses":"pages/industry-uses.js","/plan":"pages/plan.js","/quiz":"pages/quiz.js","/training":"pages/training.js","/404":"pages/404.html"}
