@@ -1,5 +1,11 @@
-var R=require("../../chunks/[turbopack]_runtime.js")("server/pages/api/send-email.js")
-R.c("server/chunks/[root-of-the-server]__8141d318._.js")
-R.c("server/chunks/[root-of-the-server]__ec476382._.js")
-R.m(8717)
-module.exports=R.m(8717).exports
+"use strict";(()=>{var e={};e.id=957,e.ids=[957],e.modules={145:e=>{e.exports=require("next/dist/compiled/next-server/pages-api.runtime.prod.js")},6249:(e,t)=>{Object.defineProperty(t,"l",{enumerable:!0,get:function(){return function e(t,n){return n in t?t[n]:"then"in t&&"function"==typeof t.then?t.then(t=>e(t,n)):"function"==typeof t&&"default"===n?t:void 0}}})},3818:(e,t,n)=>{n.r(t),n.d(t,{config:()=>l,default:()=>u,routeModule:()=>p});var r={};n.r(r),n.d(r,{default:()=>i});var o=n(1802),s=n(7153),a=n(6249);async function i(e,t){if("POST"!==e.method)return t.status(405).json({error:"Method not allowed"});let{type:n,data:r}=e.body;try{if("contact"===n){let e={to:process.env.ADMIN_EMAIL||"cooper@dronecareerpro.au",subject:`New Contact Form Submission from ${r.name}`,html:`
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${r.name}</p>
+          <p><strong>Email:</strong> ${r.email}</p>
+          <p><strong>Phone:</strong> ${r.phone}</p>
+          <p><strong>Inquiry Type:</strong> ${r.inquiryType||"Not specified"}</p>
+          <p><strong>Message:</strong></p>
+          <p>${r.message}</p>
+          <hr>
+          <p>Received at: ${new Date().toLocaleString()}</p>
+        `};return console.log("Sending email:",e),t.status(200).json({success:!0,message:"Email sent successfully"})}return t.status(400).json({error:"Invalid email type"})}catch(e){return console.error("Email sending error:",e),t.status(500).json({error:"Failed to send email",message:e.message})}}let u=(0,a.l)(r,"default"),l=(0,a.l)(r,"config"),p=new o.PagesAPIRouteModule({definition:{kind:s.x.PAGES_API,page:"/api/send-email",pathname:"/api/send-email",bundlePath:"",filename:""},userland:r})},7153:(e,t)=>{var n;Object.defineProperty(t,"x",{enumerable:!0,get:function(){return n}}),function(e){e.PAGES="PAGES",e.PAGES_API="PAGES_API",e.APP_PAGE="APP_PAGE",e.APP_ROUTE="APP_ROUTE"}(n||(n={}))},1802:(e,t,n)=>{e.exports=n(145)}};var t=require("../../webpack-api-runtime.js");t.C(e);var n=t(t.s=3818);module.exports=n})();
