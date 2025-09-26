@@ -1,6 +1,6 @@
 // pages/index.js
 import { NextSeo } from 'next-seo';
-import Layout from '../components/Layout/Layout';
+//import Layout from '../components/Layout/Layout';
 import Home from '../components/pages/Home'; // Move your Home component to components/pages/
 
 export default function HomePage({ data }) {
@@ -46,7 +46,7 @@ export default function HomePage({ data }) {
 
 // Apply layout to this page
 HomePage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return {page};
 };
 
 // Static Site Generation with Incremental Static Regeneration

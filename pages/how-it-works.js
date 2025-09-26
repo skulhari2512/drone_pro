@@ -1,6 +1,6 @@
 // pages/how-it-works.js
 import { NextSeo } from 'next-seo';
-import Layout from '../components/Layout/Layout';
+//import Layout from '../components/Layout/Layout';
 import HowItWorks from '../components/pages/HowItWorks';
 
 export default function HowItWorksPage() {
@@ -25,7 +25,7 @@ export default function HowItWorksPage() {
 }
 
 HowItWorksPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return {page};
 };
 
 export async function getStaticProps() {

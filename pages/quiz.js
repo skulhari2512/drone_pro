@@ -1,6 +1,6 @@
 // pages/quiz.js
 import { NextSeo } from 'next-seo';
-import Layout from '../components/Layout/Layout';
+//import Layout from '../components/Layout/Layout';
 import Quiz from '../components/pages/Quiz';
 
 export default function QuizPage() {
@@ -27,7 +27,7 @@ export default function QuizPage() {
 
 // Apply layout to this page
 QuizPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return {page};
 };
 
 // Use Static Generation - quiz logic is client-side
