@@ -1,7 +1,7 @@
 // pages/contact.js
 import { NextSeo } from 'next-seo';
-// import Layout from '../components/Layout/Layout'; --- IGNORE ---
-import ContactComponent from '../components/pages/Contact'; // Move your Contact component to components/pages/
+import Layout from '../components/layout/Layout';
+import ContactComponent from '../components/pages/Contact';
 
 export default function ContactPage() {
   return (
@@ -24,12 +24,15 @@ export default function ContactPage() {
   );
 }
 
+// Apply layout to this page
+ContactPage.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};
 
 // Use Static Generation for contact page (it doesn't change often)
 export async function getStaticProps() {
   return {
     props: {},
-    // Revalidate every week (604800 seconds)
-    revalidate: 604800,
+    revalidate: 604800, // Revalidate every week
   };
 }

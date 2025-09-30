@@ -7,7 +7,7 @@ import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { useToast } from '../../hooks/use-toast';
-import { Mail, Phone, Send, MapPin, Clock, Users, Award, Shield, Star, ArrowRight } from 'lucide-react';
+import { Mail, Phone, Send, MapPin, Clock, Users, Award, Shield, Star } from 'lucide-react';
 
 const Contact = () => {
   const router = useRouter();
@@ -35,75 +35,110 @@ const Contact = () => {
       inquiryType: value
     }));
   };
+  
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // Client-side validation
+  if (!formData.name || !formData.email || !formData.phone || !formData.message) {
+    toast({
+      title: "Validation Error",
+      description: "Please fill in all required fields (Name, Email, Phone, Message).",
+      variant: "destructive",
+    });
+    return;
+  }
 
-    // Client-side validation
-    if (!formData.name || !formData.email || !formData.phone || !formData.message) {
-      toast({
-        title: "Validation Error",
-        description: "Please fill in all required fields (Name, Email, Phone, Message).",
-        variant: "destructive",
-      });
-      return;
-    }
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(formData.email)) {
+    toast({
+      title: "Invalid Email",
+      description: "Please enter a valid email address.",
+      variant: "destructive",
+    });
+    return;
+  }
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      toast({
-        title: "Invalid Email",
-        description: "Please enter a valid email address.",
-        variant: "destructive",
-      });
-      return;
-    }
+  // Phone validation (basic)
+  const phoneRegex = /^[0-9\s\-\+\(\)]{8,}$/;
+  if (!phoneRegex.test(formData.phone)) {
+    toast({
+      title: "Invalid Phone",
+      description: "Please enter a valid phone number.",
+      variant: "destructive",
+    });
+    return;
+  }
 
-    setIsSubmitting(true);
+  setIsSubmitting(true);
 
+  try {
+    console.log('Submitting form data:', formData);
+
+    // Call Next.js API route
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: formData.name.trim(),
+        email: formData.email.trim().toLowerCase(),
+        phone: formData.phone.trim(),
+        message: formData.message.trim(),
+        inquiryType: formData.inquiryType || null
+      }),
+    });
+
+    let data;
     try {
-      // Call Next.js API route instead of direct Supabase call
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to submit form');
-      }
-
-      // Success
-      toast({
-        title: "Success!",
-        description: data.message || "Thank you for contacting us! We'll get back to you soon.",
-      });
-
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-        inquiryType: ''
-      });
-
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast({
-        title: "Error",
-        description: error.message || "Failed to submit form. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
+      data = await response.json();
+    } catch (parseError) {
+      console.error('Failed to parse response:', parseError);
+      throw new Error('Invalid server response');
     }
-  };
+
+    console.log('API response:', data);
+
+    if (!response.ok) {
+      // Handle error from API - safely access data.message
+      const errorMessage = data?.message || data?.error || 'Failed to submit form';
+      const errorDetails = data?.details || '';
+      console.error('API Error:', { status: response.status, message: errorMessage, details: errorDetails, fullData: data });
+      throw new Error(errorDetails ? `${errorMessage} - ${errorDetails}` : errorMessage);
+    }
+
+    // Success
+    toast({
+      title: "Success!",
+      description: data.message || "Thank you for contacting us! We'll get back to you within 24 hours.",
+      className: "bg-green-50 border-green-200",
+    });
+
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
+      inquiryType: ''
+    });
+
+    // Optional: Scroll to top after successful submission
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    toast({
+      title: "Error",
+      description: error.message || "Failed to submit form. Please try again or contact us directly at cooper@dronecareerpro.au",
+      variant: "destructive",
+    });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
@@ -178,6 +213,15 @@ const Contact = () => {
         @keyframes spin {
           to { transform: rotate(360deg); }
         }
+
+        .input-focused {
+          transition: all 0.2s ease;
+        }
+
+        .input-focused:focus {
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
       `}</style>
 
       {/* Hero Section */}
@@ -203,7 +247,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-12 px-4">
+      <section className="py-12 px-4 pb-20">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div
@@ -219,56 +263,66 @@ const Contact = () => {
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">
-                      Name *
+                    <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">
+                      Name <span className="text-red-500">*</span>
                     </label>
                     <Input
+                      id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="Your full name"
-                      className="h-12 rounded-xl border-2 focus:border-blue-500 transition-colors"
+                      className="h-12 rounded-xl border-2 focus:border-blue-500 transition-colors input-focused"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">
-                      Email *
+                    <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2">
+                      Email <span className="text-red-500">*</span>
                     </label>
                     <Input
+                      id="email"
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="your@email.com"
-                      className="h-12 rounded-xl border-2 focus:border-blue-500 transition-colors"
+                      className="h-12 rounded-xl border-2 focus:border-blue-500 transition-colors input-focused"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">
-                      Phone *
+                    <label htmlFor="phone" className="block text-sm font-semibold text-slate-700 mb-2">
+                      Phone <span className="text-red-500">*</span>
                     </label>
                     <Input
+                      id="phone"
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      placeholder="Your phone number"
-                      className="h-12 rounded-xl border-2 focus:border-blue-500 transition-colors"
+                      placeholder="0412 345 678"
+                      className="h-12 rounded-xl border-2 focus:border-blue-500 transition-colors input-focused"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                    <label htmlFor="inquiryType" className="block text-sm font-semibold text-slate-700 mb-2">
                       Inquiry Type
                     </label>
-                    <Select value={formData.inquiryType} onValueChange={handleSelectChange}>
-                      <SelectTrigger className="h-12 rounded-xl border-2">
-                        <SelectValue placeholder="Select inquiry type" />
+                    <Select 
+                      value={formData.inquiryType} 
+                      onValueChange={handleSelectChange}
+                      disabled={isSubmitting}
+                    >
+                      <SelectTrigger id="inquiryType" className="h-12 rounded-xl border-2">
+                        <SelectValue placeholder="Select inquiry type (optional)" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="training">Training Information</SelectItem>
@@ -280,17 +334,19 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">
-                      Message *
+                    <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">
+                      Message <span className="text-red-500">*</span>
                     </label>
                     <Textarea
+                      id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Tell us about your drone career goals..."
                       rows={5}
-                      className="rounded-xl border-2 focus:border-blue-500 transition-colors resize-none"
+                      className="rounded-xl border-2 focus:border-blue-500 transition-colors resize-none input-focused"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -313,6 +369,10 @@ const Contact = () => {
                       )}
                     </span>
                   </button>
+
+                  <p className="text-xs text-slate-500 text-center mt-4">
+                    By submitting this form, you agree to our privacy policy and terms of service.
+                  </p>
                 </form>
               </CardContent>
             </Card>
@@ -331,17 +391,22 @@ const Contact = () => {
                 <CardTitle className="text-2xl font-bold text-slate-900">Contact Information</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-blue-50 border-2 border-blue-100 transition-all hover:border-blue-300">
+                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-blue-50 border-2 border-blue-100 transition-all hover:border-blue-300 hover:shadow-md">
                   <div className="p-3 rounded-xl bg-blue-100">
                     <Mail className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
                     <p className="font-bold text-slate-900 mb-1">Email</p>
-                    <p className="text-slate-600">cooper@dronecareerpro.au</p>
+                    <a 
+                      href="mailto:cooper@dronecareerpro.au" 
+                      className="text-slate-600 hover:text-blue-600 transition-colors"
+                    >
+                      cooper@dronecareerpro.au
+                    </a>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-100 transition-all hover:border-emerald-300">
+                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-100 transition-all hover:border-emerald-300 hover:shadow-md">
                   <div className="p-3 rounded-xl bg-emerald-100">
                     <Phone className="w-6 h-6 text-emerald-600" />
                   </div>
@@ -351,7 +416,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-purple-50 border-2 border-purple-100 transition-all hover:border-purple-300">
+                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-purple-50 border-2 border-purple-100 transition-all hover:border-purple-300 hover:shadow-md">
                   <div className="p-3 rounded-xl bg-purple-100">
                     <MapPin className="w-6 h-6 text-purple-600" />
                   </div>
@@ -361,7 +426,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-amber-50 border-2 border-amber-100 transition-all hover:border-amber-300">
+                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-amber-50 border-2 border-amber-100 transition-all hover:border-amber-300 hover:shadow-md">
                   <div className="p-3 rounded-xl bg-amber-100">
                     <Clock className="w-6 h-6 text-amber-600" />
                   </div>
@@ -378,30 +443,44 @@ const Contact = () => {
               <CardContent className="p-6">
                 <h3 className="font-bold text-lg text-slate-900 mb-4">Why Choose Us?</h3>
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-white/50 transition-all hover:bg-white/80">
                     <div className="p-2 rounded-lg bg-blue-100">
                       <Award className="w-5 h-5 text-blue-600" />
                     </div>
-                    <span className="text-sm text-slate-700">CASA Certified Training</span>
+                    <span className="text-sm text-slate-700 font-medium">CASA Certified Training</span>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-white/50 transition-all hover:bg-white/80">
                     <div className="p-2 rounded-lg bg-emerald-100">
                       <Users className="w-5 h-5 text-emerald-600" />
                     </div>
-                    <span className="text-sm text-slate-700">500+ Successful Students</span>
+                    <span className="text-sm text-slate-700 font-medium">500+ Successful Students</span>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-white/50 transition-all hover:bg-white/80">
                     <div className="p-2 rounded-lg bg-purple-100">
                       <Shield className="w-5 h-5 text-purple-600" />
                     </div>
-                    <span className="text-sm text-slate-700">100% Pass Rate Guarantee</span>
+                    <span className="text-sm text-slate-700 font-medium">100% Pass Rate Guarantee</span>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-white/50 transition-all hover:bg-white/80">
                     <div className="p-2 rounded-lg bg-amber-100">
                       <Star className="w-5 h-5 text-amber-600" />
                     </div>
-                    <span className="text-sm text-slate-700">4.9/5 Student Rating</span>
+                    <span className="text-sm text-slate-700 font-medium">4.9/5 Student Rating</span>
                   </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Additional CTA */}
+            <Card className="shadow-xl border-0 rounded-3xl bg-gradient-to-br from-slate-800 to-slate-900 text-white">
+              <CardContent className="p-6">
+                <h3 className="font-bold text-lg mb-2">Need Immediate Assistance?</h3>
+                <p className="text-slate-300 text-sm mb-4">
+                  If you have an urgent inquiry, please mention it in your message and we'll prioritize your request.
+                </p>
+                <div className="flex items-center gap-2 text-sm text-slate-400">
+                  <Clock className="w-4 h-4" />
+                  <span>Monday - Friday: 9:00 AM - 5:00 PM AEST</span>
                 </div>
               </CardContent>
             </Card>

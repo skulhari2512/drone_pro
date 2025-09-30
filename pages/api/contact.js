@@ -1,9 +1,7 @@
 // pages/api/contact.js
-import { supabase } from '../../lib/supabase';
-import { sendContactEmail } from '../../lib/email';
+import { createClient } from '@supabase/supabase-js';
 
 export default async function handler(req, res) {
-    // Only allow POST requests
     if (req.method !== 'POST') {
         return res.status(405).json({
             error: 'Method not allowed',
@@ -12,7 +10,25 @@ export default async function handler(req, res) {
     }
 
     try {
+        // Create Supabase client with anon key (public access)
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+        
+        console.log('🔑 Supabase URL:', supabaseUrl ? 'Set' : 'MISSING');
+        console.log('🔑 Supabase Anon Key:', supabaseAnonKey ? 'Set (length: ' + supabaseAnonKey.length + ')' : 'MISSING');
+
+        if (!supabaseUrl || !supabaseAnonKey) {
+            return res.status(500).json({
+                error: 'Configuration Error',
+                message: 'Supabase credentials are not configured'
+            });
+        }
+
+        const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
         const { name, email, phone, message, inquiryType } = req.body;
+
+        console.log('📝 Received contact form:', { name, email, phone, inquiryType });
 
         // Validation
         if (!name || !email || !phone || !message) {
@@ -31,78 +47,63 @@ export default async function handler(req, res) {
             });
         }
 
-        // Phone validation (basic)
-        const phoneRegex = /^[\d\s\-\+\(\)]+$/;
-        if (!phoneRegex.test(phone)) {
-            return res.status(400).json({
-                error: 'Invalid Phone',
-                message: 'Please enter a valid phone number.'
-            });
-        }
+        // Prepare data for insertion
+        const insertData = {
+            name: name.trim(),
+            email: email.trim().toLowerCase(),
+            phone: phone.trim(),
+            message: message.trim(),
+            inquiry_type: inquiryType || null,
+        };
+
+        console.log('💾 Attempting to insert:', insertData);
 
         // Store in Supabase
         const { data: contactData, error: dbError } = await supabase
-            .from('contacts')
-            .insert([
-                {
-                    name,
-                    email,
-                    phone,
-                    message,
-                    inquiry_type: inquiryType || 'general',
-                    created_at: new Date().toISOString()
-                }
-            ])
+            .from('contact_us')
+            .insert([insertData])
             .select()
             .single();
 
         if (dbError) {
-            console.error('Database error:', dbError);
+            console.error('❌ Database error:', {
+                message: dbError.message,
+                details: dbError.details,
+                hint: dbError.hint,
+                code: dbError.code,
+            });
+
             return res.status(500).json({
                 error: 'Database Error',
-                message: 'Failed to save contact information. Please try again.'
+                message: `Failed to save contact information: ${dbError.message}`,
+                details: dbError.hint || dbError.details || 'Please check your database configuration'
             });
         }
 
-        // Send email notification (if email service is configured)
-        try {
-            await sendContactEmail({
-                name,
-                email,
-                phone,
-                message,
-                inquiryType
-            });
-        } catch (emailError) {
-            // Log email error but don't fail the request
-            console.error('Email sending failed:', emailError);
-            // You might want to store this in a queue for retry
-        }
+        console.log('✅ Contact saved successfully:', contactData?.id);
 
-        // Return success response
         return res.status(200).json({
             success: true,
-            message: 'Thank you for contacting us! We\'ll get back to you soon.',
+            message: "Thank you for contacting us! We'll get back to you within 24 hours.",
             data: {
-                id: contactData.id,
-                name: contactData.name
+                id: contactData?.id,
+                name: contactData?.name
             }
         });
 
     } catch (error) {
-        console.error('Contact form submission error:', error);
+        console.error('❌ Server error:', error);
         return res.status(500).json({
             error: 'Server Error',
-            message: 'An unexpected error occurred. Please try again later.'
+            message: error.message || 'An unexpected error occurred. Please try again later.',
         });
     }
 }
 
-// Configure API route settings
 export const config = {
     api: {
         bodyParser: {
-            sizeLimit: '1mb', // Limit request body size
+            sizeLimit: '1mb',
         },
     },
 };
