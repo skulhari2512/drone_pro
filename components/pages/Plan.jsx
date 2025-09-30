@@ -212,12 +212,15 @@ const enhanceCourseWithDelivery = (course, deliveryMethod) => {
       description: 'Flexible online training at your own pace',
       features: ['Self-paced learning modules', 'Interactive online simulations'],
       duration: `${course.duration || '3-5 days'} (Self-paced)`,
-      price: Math.floor((course.price || 1500) * 0.45),
+      price: Math.floor((course.price || 1500) * 0.7),
       locations: ['Australia-wide']
     }
   };
 
   if (course.name && course.name.includes('AROC')) {
+    return { ...course, deliveryOptions: [deliveryOptions.classroom] };
+  }
+  if (course.name && course.name.includes('multi_rotor_7_25kg_operations')) {
     return { ...course, deliveryOptions: [deliveryOptions.classroom] };
   }
 
