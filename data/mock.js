@@ -99,7 +99,7 @@ export const droneCourseCatalog = {
       "Safety protocols for heavier aircraft operations",
       "Access to higher-paying commercial opportunities"
     ],
-    image: "https://images.unsplash.com/photo-1663298277980-66a7eaa8f467?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1666315915304-6561a573f61f?w=800&q=80"
   },
   aroc: {
     name: "AROC (Aircraft Radio Operator Certificate)",
