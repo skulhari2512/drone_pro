@@ -217,10 +217,7 @@ const enhanceCourseWithDelivery = (course, deliveryMethod) => {
     }
   };
 
-  if (course.name && course.name.includes('AROC')) {
-    return { ...course, deliveryOptions: [deliveryOptions.classroom] };
-  }
-  if (course.name && course.name.includes('multi_rotor_7_25kg_operations')) {
+  if (course.name && (course.name.includes('AROC') || course.name.includes('Multi-Rotor 7-25kg Operations'))) {
     return { ...course, deliveryOptions: [deliveryOptions.classroom] };
   }
 
