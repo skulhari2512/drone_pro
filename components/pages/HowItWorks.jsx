@@ -1,32 +1,30 @@
 // components/pages/HowItWorks.jsx
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { CheckCircle, ArrowRight, Download, Users, PlayCircle } from 'lucide-react';
+import { Card, CardContent } from '../ui/card';
+import { CheckCircle, ArrowRight, PlayCircle } from 'lucide-react';
 import { Button } from '../ui/button';
 import howItWorksData from '../../data/how-it-works.json';
 
 const HowItWorks = () => {
-const stepImages = [
-  '/images/professional-dji-drone-training-australia.jpg',
-  '/images/drone-pilot-assessment-process-australia.jpg',
-  '/images/commercial-drone-license-training-course.jpg',
-  '/images/hands-on-drone-flight-training-australia.jpg',
-  '/images/drone-certification-exam-preparation.jpg',
-  '/images/certified-drone-pilot-career-success.jpg',
-];
+  const stepImages = [
+    '/images/professional-dji-drone-training-australia.jpg',
+    '/images/drone-pilot-assessment-process-australia.jpg',
+    '/images/commercial-drone-license-training-course.jpg',
+    '/images/hands-on-drone-flight-training-australia.jpg',
+    '/images/drone-certification-exam-preparation.jpg',
+    '/images/certified-drone-pilot-career-success.jpg',
+  ];
 
   return (
     <div className="min-h-screen bg-white font-sans">
-      {/* Premium Hero Section with DJI Drone Background */}
+      {/* Premium Hero Section */}
       <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
         <div className="absolute inset-0 w-full h-full">
           <Image
             src={stepImages[0]}
-            alt="Professional DJI drone training course in Australia - How it works"
+            alt="How it works hero"
             fill
             className="object-cover"
             priority
@@ -34,10 +32,8 @@ const stepImages = [
           />
         </div>
 
-        {/* Dark gradient overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30" />
 
-        {/* Hero Content */}
         <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -65,8 +61,9 @@ const stepImages = [
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`flex flex-col lg:flex-row items-center gap-16 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                  }`}
+                className={`flex flex-col lg:flex-row items-center gap-16 ${
+                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                }`}
               >
                 {/* Image */}
                 <div className="lg:w-1/2">
@@ -80,7 +77,6 @@ const stepImages = [
                         sizes="(max-width: 768px) 100vw, 50vw"
                       />
                     </div>
-                    {/* Step number overlay */}
                     <div className="absolute -top-4 -left-4 w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                       {index + 1}
                     </div>
@@ -121,7 +117,6 @@ const stepImages = [
 
       {/* Enhanced Next Steps CTA */}
       <section className="py-24 relative overflow-hidden">
-        {/* Enhanced background with gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-900 to-blue-900"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 
@@ -139,29 +134,24 @@ const stepImages = [
               Take our free career assessment to get your personalized training pathway
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/quiz" legacyBehavior>
-                <a>
-                  <Button
-                    size="lg"
-                    className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 text-lg rounded-full font-semibold shadow-xl hover:scale-105 transition-all duration-300"
-                  >
-                    Take Career Quiz
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                </a>
-              </Link>
-              <Link href="/training" legacyBehavior>
-                <a>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 text-lg rounded-full font-semibold hover:scale-105 transition-all duration-300"
-                  >
-                    View Training Options
-                    <PlayCircle className="ml-2 w-5 h-5" />
-                  </Button>
-                </a>
-              </Link>
+              <Button
+                href="/quiz"
+                size="lg"
+                className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 text-lg rounded-full font-semibold shadow-xl hover:scale-105 transition-all duration-300"
+              >
+                Take Career Quiz
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+
+              <Button
+                href="/training"
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 text-lg rounded-full font-semibold hover:scale-105 transition-all duration-300"
+              >
+                View Training Options
+                <PlayCircle className="ml-2 w-5 h-5" />
+              </Button>
             </div>
           </motion.div>
         </div>

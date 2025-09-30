@@ -1,14 +1,13 @@
 import '../styles/globals.css'
-import { Toaster } from '../components/ui/toaster'
+import Header from '../components/layout/Header'
+import Footer from '../components/layout/Footer'
 
 function MyApp({ Component, pageProps }) {
-  // Use the layout defined at the page level, if available
-  const getLayout = Component.getLayout || ((page) => page)
-
   return (
     <>
-      {getLayout(<Component {...pageProps} />)}
-      <Toaster />
+      <Header />
+      <Component {...pageProps} />
+      <Footer />
     </>
   )
 }

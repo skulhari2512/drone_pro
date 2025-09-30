@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const SUPABASE_URL = process.env.REACT_APP_SUPABASE_URL || 'https://ymrtlcyafzuotngltgcb.supabase.co';
-const SUPABASE_ANON_KEY = process.env.REACT_APP_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InltcnRsY3lhZnp1b3RuZ2x0Z2NiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTczMjU4MjAsImV4cCI6MjA3MjkwMTgyMH0.-BgOxU6DJe8wF0N_tbBeNpVmHtvfv0BG6YcuzPLK1Gc';
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ymrtlcyafzuotngltgcb.supabase.co';
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InltcnRsY3lhZnp1b3RuZ2x0Z2NiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTczMjU4MjAsImV4cCI6MjA3MjkwMTgyMH0.-BgOxU6DJe8wF0N_tbBeNpVmHtvfv0BG6YcuzPLK1Gc';
+
 
 const api = axios.create({
   baseURL: `${SUPABASE_URL}/functions/v1`,

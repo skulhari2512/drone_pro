@@ -1,4 +1,5 @@
 import * as React from "react"
+import Link from "next/link"
 import { Slot } from "@radix-ui/react-slot"
 import { cva } from "class-variance-authority";
 
@@ -60,7 +61,21 @@ const buttonVariants = cva(
   }
 )
 
-const Button = React.forwardRef(({ className, variant, size, asChild = false, ...props }, ref) => {
+const Button = React.forwardRef(({ className, variant, size, asChild = false, href, children, ...props }, ref) => {
+  // If href is provided, render as Link (which becomes an <a> tag)
+if (href) {
+  return (
+    <Link
+      href={href}
+      ref={ref}
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    >
+      {children}
+    </Link>
+  );
+}
+
   const Comp = asChild ? Slot : "button"
   
   // Check if it's a glassy variant to apply special effects
@@ -80,7 +95,8 @@ const Button = React.forwardRef(({ className, variant, size, asChild = false, ..
     <Comp
       className={cn(buttonVariants({ variant, size, className }))}
       ref={ref}
-      {...props} />
+      {...props}
+    />
   );
 })
 

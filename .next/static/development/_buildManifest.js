@@ -2,8 +2,29 @@ self.__BUILD_MANIFEST = {
   "/": [
     "./static/chunks/pages/index.js"
   ],
+  "/_error": [
+    "./static/chunks/pages/_error.js"
+  ],
+  "/contact": [
+    "./static/chunks/pages/contact.js"
+  ],
+  "/faq": [
+    "./static/chunks/pages/faq.js"
+  ],
+  "/how-it-works": [
+    "./static/chunks/pages/how-it-works.js"
+  ],
+  "/industry-uses": [
+    "./static/chunks/pages/industry-uses.js"
+  ],
+  "/plan": [
+    "./static/chunks/pages/plan.js"
+  ],
   "/quiz": [
     "./static/chunks/pages/quiz.js"
+  ],
+  "/training": [
+    "./static/chunks/pages/training.js"
   ],
   "__rewrites": {
     "afterFiles": [],
@@ -15,7 +36,6 @@ self.__BUILD_MANIFEST = {
     "/_app",
     "/_error",
     "/api/contact",
-    "/api/email",
     "/api/send-email",
     "/contact",
     "/faq",

@@ -503,9 +503,11 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/link.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$slot$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@radix-ui/react-slot/dist/index.mjs [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$class$2d$variance$2d$authority$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/class-variance-authority/dist/index.mjs [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/utils.js [client] (ecmascript)");
+;
 ;
 ;
 ;
@@ -560,7 +562,25 @@ const buttonVariants = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_
     }
 });
 const Button = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["forwardRef"](_c = (param, ref)=>{
-    let { className, variant, size, asChild = false, ...props } = param;
+    let { className, variant, size, asChild = false, href, children, ...props } = param;
+    // If href is provided, render as Link (which becomes an <a> tag)
+    if (href) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+            href: href,
+            ref: ref,
+            className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$js__$5b$client$5d$__$28$ecmascript$29$__["cn"])(buttonVariants({
+                variant,
+                size,
+                className
+            })),
+            ...props,
+            children: children
+        }, void 0, false, {
+            fileName: "[project]/components/ui/button.jsx",
+            lineNumber: 68,
+            columnNumber: 5
+        }, ("TURBOPACK compile-time value", void 0));
+    }
     const Comp = asChild ? __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$slot$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["Slot"] : "button";
     // Check if it's a glassy variant to apply special effects
     const isGlassy = variant && variant.startsWith('glassy');
@@ -573,7 +593,7 @@ const Button = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$nod
             ...props
         }, void 0, false, {
             fileName: "[project]/components/ui/button.jsx",
-            lineNumber: 70,
+            lineNumber: 85,
             columnNumber: 12
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -587,7 +607,7 @@ const Button = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$nod
         ...props
     }, void 0, false, {
         fileName: "[project]/components/ui/button.jsx",
-        lineNumber: 80,
+        lineNumber: 95,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 });
@@ -692,7 +712,7 @@ const GlassyButton = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d
                 }
             }, void 0, false, {
                 fileName: "[project]/components/ui/button.jsx",
-                lineNumber: 195,
+                lineNumber: 211,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -719,7 +739,7 @@ const GlassyButton = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d
                         }
                     }, void 0, false, {
                         fileName: "[project]/components/ui/button.jsx",
-                        lineNumber: 219,
+                        lineNumber: 235,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -735,7 +755,7 @@ const GlassyButton = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d
                         }
                     }, void 0, false, {
                         fileName: "[project]/components/ui/button.jsx",
-                        lineNumber: 231,
+                        lineNumber: 247,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -743,19 +763,19 @@ const GlassyButton = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d
                         children: children
                     }, void 0, false, {
                         fileName: "[project]/components/ui/button.jsx",
-                        lineNumber: 245,
+                        lineNumber: 261,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/ui/button.jsx",
-                lineNumber: 208,
+                lineNumber: 224,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/components/ui/button.jsx",
-        lineNumber: 187,
+        lineNumber: 203,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 });
@@ -1007,7 +1027,6 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/link.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/button.jsx [client] (ecmascript)");
@@ -1026,9 +1045,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Enhanced$2f$An
 ;
 ;
 ;
-;
 const Home = ()=>{
-    // Video path - video should be in public/videos/ folder
     const heroVideo = '/videos/hero-video.mp4';
     const stats = [
         {
@@ -1087,37 +1104,29 @@ const Home = ()=>{
                             muted: true,
                             playsInline: true,
                             className: "w-full h-full object-cover",
-                            onLoadedData: ()=>console.log('Video loaded successfully!'),
-                            onError: (e)=>{
-                                console.error('Video failed to load from:', heroVideo);
-                                console.error('Make sure hero-video.mp4 is in public/videos/ folder');
-                            },
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("source", {
-                                    src: heroVideo,
-                                    type: "video/mp4"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/pages/Home.jsx",
-                                    lineNumber: 58,
-                                    columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0)),
-                                "Your browser does not support the video tag."
-                            ]
-                        }, void 0, true, {
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("source", {
+                                src: heroVideo,
+                                type: "video/mp4"
+                            }, void 0, false, {
+                                fileName: "[project]/components/pages/Home.jsx",
+                                lineNumber: 49,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0))
+                        }, void 0, false, {
                             fileName: "[project]/components/pages/Home.jsx",
-                            lineNumber: 46,
+                            lineNumber: 42,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/components/pages/Home.jsx",
-                        lineNumber: 45,
+                        lineNumber: 41,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30 z-[1]"
                     }, void 0, false, {
                         fileName: "[project]/components/pages/Home.jsx",
-                        lineNumber: 64,
+                        lineNumber: 53,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1154,7 +1163,7 @@ const Home = ()=>{
                                     children: "Stop dreaming, Start earning"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/Home.jsx",
-                                    lineNumber: 75,
+                                    lineNumber: 62,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["motion"].p, {
@@ -1174,7 +1183,7 @@ const Home = ()=>{
                                     children: "While others wait, you fly. Get your licence now and lead in Australia's next wave of drone innovation"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/Home.jsx",
-                                    lineNumber: 85,
+                                    lineNumber: 71,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -1192,83 +1201,57 @@ const Home = ()=>{
                                         delay: 0.6
                                     },
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
                                             href: "/quiz",
-                                            legacyBehavior: true,
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                    size: "lg",
-                                                    className: "bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg",
-                                                    children: [
-                                                        "Take Career Quiz",
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
-                                                            className: "ml-2 h-5 w-5"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/components/pages/Home.jsx",
-                                                            lineNumber: 108,
-                                                            columnNumber: 21
-                                                        }, ("TURBOPACK compile-time value", void 0))
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/components/pages/Home.jsx",
-                                                    lineNumber: 103,
-                                                    columnNumber: 19
-                                                }, ("TURBOPACK compile-time value", void 0))
-                                            }, void 0, false, {
-                                                fileName: "[project]/components/pages/Home.jsx",
-                                                lineNumber: 102,
-                                                columnNumber: 17
-                                            }, ("TURBOPACK compile-time value", void 0))
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/pages/Home.jsx",
-                                            lineNumber: 101,
-                                            columnNumber: 15
-                                        }, ("TURBOPACK compile-time value", void 0)),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                            href: "/how-it-works",
-                                            legacyBehavior: true,
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                    variant: "outline",
-                                                    size: "lg",
-                                                    className: "border-white text-white hover:bg-white hover:text-slate-900 px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl",
-                                                    children: "Learn More"
+                                            size: "lg",
+                                            className: "bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg",
+                                            children: [
+                                                "Take Career Quiz",
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
+                                                    className: "ml-2 h-5 w-5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/Home.jsx",
-                                                    lineNumber: 115,
-                                                    columnNumber: 19
+                                                    lineNumber: 92,
+                                                    columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
-                                            }, void 0, false, {
-                                                fileName: "[project]/components/pages/Home.jsx",
-                                                lineNumber: 114,
-                                                columnNumber: 17
-                                            }, ("TURBOPACK compile-time value", void 0))
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/components/pages/Home.jsx",
+                                            lineNumber: 86,
+                                            columnNumber: 15
+                                        }, ("TURBOPACK compile-time value", void 0)),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
+                                            href: "/how-it-works",
+                                            variant: "outline",
+                                            size: "lg",
+                                            className: "border-white text-white hover:bg-white hover:text-slate-900 px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl",
+                                            children: "Learn More"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/Home.jsx",
-                                            lineNumber: 113,
+                                            lineNumber: 95,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/pages/Home.jsx",
-                                    lineNumber: 95,
+                                    lineNumber: 80,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/pages/Home.jsx",
-                            lineNumber: 68,
+                            lineNumber: 56,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/components/pages/Home.jsx",
-                        lineNumber: 67,
+                        lineNumber: 55,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/pages/Home.jsx",
-                lineNumber: 42,
+                lineNumber: 40,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1303,12 +1286,12 @@ const Home = ()=>{
                                             className: "w-6 h-6"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/Home.jsx",
-                                            lineNumber: 144,
+                                            lineNumber: 123,
                                             columnNumber: 21
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/components/pages/Home.jsx",
-                                        lineNumber: 143,
+                                        lineNumber: 122,
                                         columnNumber: 19
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1318,12 +1301,12 @@ const Home = ()=>{
                                             duration: 2
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/Home.jsx",
-                                            lineNumber: 148,
+                                            lineNumber: 127,
                                             columnNumber: 23
                                         }, ("TURBOPACK compile-time value", void 0)) : stat.value
                                     }, void 0, false, {
                                         fileName: "[project]/components/pages/Home.jsx",
-                                        lineNumber: 146,
+                                        lineNumber: 125,
                                         columnNumber: 19
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1331,29 +1314,29 @@ const Home = ()=>{
                                         children: stat.label
                                     }, void 0, false, {
                                         fileName: "[project]/components/pages/Home.jsx",
-                                        lineNumber: 156,
+                                        lineNumber: 135,
                                         columnNumber: 19
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, index, true, {
                                 fileName: "[project]/components/pages/Home.jsx",
-                                lineNumber: 135,
+                                lineNumber: 114,
                                 columnNumber: 17
                             }, ("TURBOPACK compile-time value", void 0));
                         })
                     }, void 0, false, {
                         fileName: "[project]/components/pages/Home.jsx",
-                        lineNumber: 131,
+                        lineNumber: 110,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/components/pages/Home.jsx",
-                    lineNumber: 130,
+                    lineNumber: 109,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/components/pages/Home.jsx",
-                lineNumber: 129,
+                lineNumber: 108,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1383,7 +1366,7 @@ const Home = ()=>{
                                     children: "Your path to success"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/Home.jsx",
-                                    lineNumber: 173,
+                                    lineNumber: 152,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1391,13 +1374,13 @@ const Home = ()=>{
                                     children: "From assessment to certification, we guide you every step"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/Home.jsx",
-                                    lineNumber: 176,
+                                    lineNumber: 155,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/pages/Home.jsx",
-                            lineNumber: 166,
+                            lineNumber: 145,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1432,12 +1415,12 @@ const Home = ()=>{
                                                     className: "object-cover group-hover:scale-105 transition-transform duration-700"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/Home.jsx",
-                                                    lineNumber: 193,
+                                                    lineNumber: 172,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/components/pages/Home.jsx",
-                                                lineNumber: 192,
+                                                lineNumber: 171,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1448,7 +1431,7 @@ const Home = ()=>{
                                                         children: feature.title
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/pages/Home.jsx",
-                                                        lineNumber: 202,
+                                                        lineNumber: 181,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1456,40 +1439,40 @@ const Home = ()=>{
                                                         children: feature.description
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/pages/Home.jsx",
-                                                        lineNumber: 203,
+                                                        lineNumber: 182,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/pages/Home.jsx",
-                                                lineNumber: 201,
+                                                lineNumber: 180,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/pages/Home.jsx",
-                                        lineNumber: 191,
+                                        lineNumber: 170,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, index, false, {
                                     fileName: "[project]/components/pages/Home.jsx",
-                                    lineNumber: 183,
+                                    lineNumber: 162,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0)))
                         }, void 0, false, {
                             fileName: "[project]/components/pages/Home.jsx",
-                            lineNumber: 181,
+                            lineNumber: 160,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/pages/Home.jsx",
-                    lineNumber: 165,
+                    lineNumber: 144,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/components/pages/Home.jsx",
-                lineNumber: 164,
+                lineNumber: 143,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1499,14 +1482,14 @@ const Home = ()=>{
                         className: "absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800"
                     }, void 0, false, {
                         fileName: "[project]/components/pages/Home.jsx",
-                        lineNumber: 214,
+                        lineNumber: 192,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
                     }, void 0, false, {
                         fileName: "[project]/components/pages/Home.jsx",
-                        lineNumber: 215,
+                        lineNumber: 193,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1533,7 +1516,7 @@ const Home = ()=>{
                                     children: "Ready to begin?"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/Home.jsx",
-                                    lineNumber: 225,
+                                    lineNumber: 203,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1541,62 +1524,49 @@ const Home = ()=>{
                                     children: "Join thousands of successful graduates who've transformed their careers with drone technology"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/Home.jsx",
-                                    lineNumber: 228,
+                                    lineNumber: 206,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
                                     href: "/quiz",
-                                    legacyBehavior: true,
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
-                                            size: "lg",
-                                            className: "bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-xl font-semibold",
-                                            children: [
-                                                "Start Your Journey",
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
-                                                    className: "ml-2 h-5 w-5"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/pages/Home.jsx",
-                                                    lineNumber: 238,
-                                                    columnNumber: 19
-                                                }, ("TURBOPACK compile-time value", void 0))
-                                            ]
-                                        }, void 0, true, {
+                                    size: "lg",
+                                    className: "bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-xl font-semibold",
+                                    children: [
+                                        "Start Your Journey",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
+                                            className: "ml-2 h-5 w-5"
+                                        }, void 0, false, {
                                             fileName: "[project]/components/pages/Home.jsx",
-                                            lineNumber: 233,
-                                            columnNumber: 17
+                                            lineNumber: 215,
+                                            columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/pages/Home.jsx",
-                                        lineNumber: 232,
-                                        columnNumber: 15
-                                    }, ("TURBOPACK compile-time value", void 0))
-                                }, void 0, false, {
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/components/pages/Home.jsx",
-                                    lineNumber: 231,
+                                    lineNumber: 209,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/pages/Home.jsx",
-                            lineNumber: 218,
+                            lineNumber: 196,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/components/pages/Home.jsx",
-                        lineNumber: 217,
+                        lineNumber: 195,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/pages/Home.jsx",
-                lineNumber: 212,
+                lineNumber: 191,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/components/pages/Home.jsx",
-        lineNumber: 40,
+        lineNumber: 39,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };

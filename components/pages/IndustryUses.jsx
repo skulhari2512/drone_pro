@@ -1,23 +1,22 @@
 // components/pages/IndustryUses.jsx
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '../ui/card';
-import { ArrowRight, DollarSign, Clock, TrendingUp } from 'lucide-react';
+import { ArrowRight, DollarSign, TrendingUp } from 'lucide-react';
 import { Button } from '../ui/button';
 import industryData from '../../data/industry-uses.json';
 
 const IndustryUses = () => {
-  // Update image paths to use public folder
   const industryImages = {
     "Construction": "/images/construction-drone-inspection-surveying-australia.jpg",
     "Asset Inspection": "/images/civil-engineering-drone-surveying-training.jpg",
     "Agriculture": "/images/precision-agriculture-drone-course-australia.jpg",
     "Environmental Mapping": "/images/environmental-mapping-drone-services-australia.jpg",
-  "Mining and Quarry": "/images/mining-drone-operations-training-course.jpg",
-  "Film and TV": "/images/aerial-photography-drone-training-australia.jpg"
-};
+    "Mining and Quarry": "/images/mining-drone-operations-training-course.jpg",
+    "Film and TV": "/images/aerial-photography-drone-training-australia.jpg"
+  };
+
   const earningPotentials = {
     "Construction": "$160-$250/hour",
     "Asset Inspection": "$200-$400/hour",
@@ -59,20 +58,20 @@ const IndustryUses = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`flex flex-col lg:flex-row items-center gap-12 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                  }`}
+                className={`flex flex-col lg:flex-row items-center gap-12 ${
+                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                }`}
               >
                 {/* Image */}
                 <div className="lg:w-1/2">
                   <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden shadow-xl">
                     <Image
-                      src={industryImages[industry.heading] || "/images/construction-drone-inspection-surveying-australia.jpg"}
-                      alt={`${industry.heading} drone applications Australia - Commercial drone training`}
+                      src={industryImages[industry.heading] || "/images/dimg18.jpg"}
+                      alt={industry.heading}
                       fill
                       className="object-cover hover:scale-105 transition-transform duration-700"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                    {/* Overlay badge */}
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
                       <span className="text-sm font-semibold text-slate-900">
                         {earningPotentials[industry.heading] || "$150-$300/hour"}
@@ -125,18 +124,6 @@ const IndustryUses = () => {
                           <span className="text-slate-700">{bullet}</span>
                         </div>
                       ))}
-                    </div>
-
-                    {/* CTA Button */}
-                    <div className="mt-8">
-                      <Link href="/quiz" legacyBehavior>
-                        <a>
-                          <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition-all duration-300">
-                            Start Your {industry.heading} Career
-                            <ArrowRight className="ml-2 w-4 h-4" />
-                          </Button>
-                        </a>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -204,17 +191,14 @@ const IndustryUses = () => {
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
               Take our free career assessment to discover which industry suits your skills and interests
             </p>
-            <Link href="/quiz" legacyBehavior>
-              <a>
-                <Button
-                  size="lg"
-                  className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg rounded-full font-semibold shadow-xl hover:scale-105 transition-all duration-300"
-                >
-                  Take Career Assessment
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </a>
-            </Link>
+            <Button
+              href="/quiz"
+              size="lg"
+              className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg rounded-full font-semibold shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              Take Career Assessment
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
           </motion.div>
         </div>
       </section>

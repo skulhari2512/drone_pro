@@ -122,16 +122,16 @@ const PDFDownloadModal = ({ isOpen, onClose, planTitle = "Drone Career Plan" }) 
       };
 
       // Use environment variable for the API URL
-      const apiUrl = process.env.REACT_APP_SUPABASE_URL 
-        ? `${process.env.REACT_APP_SUPABASE_URL}/functions/v1/download-pdf`
-        : 'https://ymrtlcyafzuotngltgcb.supabase.co/functions/v1/download-pdf';
+      const apiUrl = process.env.NEXT_PUBLIC_SUPABASE_URL 
+      ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/download-pdf`
+      : 'https://ymrtlcyafzuotngltgcb.supabase.co/functions/v1/download-pdf';
 
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'apikey': process.env.REACT_APP_SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY}`,
+          'apikey': process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify(requestData)
       });

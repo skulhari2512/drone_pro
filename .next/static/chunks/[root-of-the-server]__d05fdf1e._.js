@@ -628,9 +628,11 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/link.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$slot$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@radix-ui/react-slot/dist/index.mjs [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$class$2d$variance$2d$authority$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/class-variance-authority/dist/index.mjs [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/utils.js [client] (ecmascript)");
+;
 ;
 ;
 ;
@@ -685,7 +687,25 @@ const buttonVariants = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_
     }
 });
 const Button = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["forwardRef"](_c = (param, ref)=>{
-    let { className, variant, size, asChild = false, ...props } = param;
+    let { className, variant, size, asChild = false, href, children, ...props } = param;
+    // If href is provided, render as Link (which becomes an <a> tag)
+    if (href) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+            href: href,
+            ref: ref,
+            className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$js__$5b$client$5d$__$28$ecmascript$29$__["cn"])(buttonVariants({
+                variant,
+                size,
+                className
+            })),
+            ...props,
+            children: children
+        }, void 0, false, {
+            fileName: "[project]/components/ui/button.jsx",
+            lineNumber: 68,
+            columnNumber: 5
+        }, ("TURBOPACK compile-time value", void 0));
+    }
     const Comp = asChild ? __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$slot$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["Slot"] : "button";
     // Check if it's a glassy variant to apply special effects
     const isGlassy = variant && variant.startsWith('glassy');
@@ -698,7 +718,7 @@ const Button = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$nod
             ...props
         }, void 0, false, {
             fileName: "[project]/components/ui/button.jsx",
-            lineNumber: 70,
+            lineNumber: 85,
             columnNumber: 12
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -712,7 +732,7 @@ const Button = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$nod
         ...props
     }, void 0, false, {
         fileName: "[project]/components/ui/button.jsx",
-        lineNumber: 80,
+        lineNumber: 95,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 });
@@ -817,7 +837,7 @@ const GlassyButton = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d
                 }
             }, void 0, false, {
                 fileName: "[project]/components/ui/button.jsx",
-                lineNumber: 195,
+                lineNumber: 211,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -844,7 +864,7 @@ const GlassyButton = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d
                         }
                     }, void 0, false, {
                         fileName: "[project]/components/ui/button.jsx",
-                        lineNumber: 219,
+                        lineNumber: 235,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -860,7 +880,7 @@ const GlassyButton = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d
                         }
                     }, void 0, false, {
                         fileName: "[project]/components/ui/button.jsx",
-                        lineNumber: 231,
+                        lineNumber: 247,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -868,19 +888,19 @@ const GlassyButton = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d
                         children: children
                     }, void 0, false, {
                         fileName: "[project]/components/ui/button.jsx",
-                        lineNumber: 245,
+                        lineNumber: 261,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/ui/button.jsx",
-                lineNumber: 208,
+                lineNumber: 224,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/components/ui/button.jsx",
-        lineNumber: 187,
+        lineNumber: 203,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 });
@@ -909,7 +929,6 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/link.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/card.jsx [client] (ecmascript)");
@@ -918,7 +937,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$play$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PlayCircle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/circle-play.js [client] (ecmascript) <export default as PlayCircle>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/button.jsx [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$how$2d$it$2d$works$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/data/how-it-works.json (json)");
-;
 ;
 ;
 ;
@@ -946,26 +964,26 @@ const HowItWorks = ()=>{
                         className: "absolute inset-0 w-full h-full",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
                             src: stepImages[0],
-                            alt: "Professional DJI drone training course in Australia - How it works",
+                            alt: "How it works hero",
                             fill: true,
                             className: "object-cover",
                             priority: true,
                             sizes: "100vw"
                         }, void 0, false, {
                             fileName: "[project]/components/pages/HowItWorks.jsx",
-                            lineNumber: 27,
+                            lineNumber: 25,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/components/pages/HowItWorks.jsx",
-                        lineNumber: 26,
+                        lineNumber: 24,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute inset-0 bg-gradient-to-b from-black/60 to-black/30"
                     }, void 0, false, {
                         fileName: "[project]/components/pages/HowItWorks.jsx",
-                        lineNumber: 38,
+                        lineNumber: 35,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -988,7 +1006,7 @@ const HowItWorks = ()=>{
                                     children: __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$how$2d$it$2d$works$2e$json__$28$json$29$__["default"].title
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                    lineNumber: 47,
+                                    lineNumber: 43,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -996,24 +1014,24 @@ const HowItWorks = ()=>{
                                     children: __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$how$2d$it$2d$works$2e$json__$28$json$29$__["default"].summary
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                    lineNumber: 50,
+                                    lineNumber: 46,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/pages/HowItWorks.jsx",
-                            lineNumber: 42,
+                            lineNumber: 38,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/components/pages/HowItWorks.jsx",
-                        lineNumber: 41,
+                        lineNumber: 37,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/pages/HowItWorks.jsx",
-                lineNumber: 24,
+                lineNumber: 23,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1058,12 +1076,12 @@ const HowItWorks = ()=>{
                                                         sizes: "(max-width: 768px) 100vw, 50vw"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                        lineNumber: 75,
+                                                        lineNumber: 72,
                                                         columnNumber: 23
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                    lineNumber: 74,
+                                                    lineNumber: 71,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1071,18 +1089,18 @@ const HowItWorks = ()=>{
                                                     children: index + 1
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                    lineNumber: 84,
+                                                    lineNumber: 80,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/pages/HowItWorks.jsx",
-                                            lineNumber: 73,
+                                            lineNumber: 70,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/components/pages/HowItWorks.jsx",
-                                        lineNumber: 72,
+                                        lineNumber: 69,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1097,14 +1115,14 @@ const HowItWorks = ()=>{
                                                             className: "w-8 h-8 text-green-600"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                            lineNumber: 94,
+                                                            lineNumber: 90,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         step.heading
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                    lineNumber: 93,
+                                                    lineNumber: 89,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1115,7 +1133,7 @@ const HowItWorks = ()=>{
                                                                 children: paragraph
                                                             }, pIndex, false, {
                                                                 fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                                lineNumber: 100,
+                                                                lineNumber: 96,
                                                                 columnNumber: 25
                                                             }, ("TURBOPACK compile-time value", void 0))),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1127,7 +1145,7 @@ const HowItWorks = ()=>{
                                                                             className: "w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                                            lineNumber: 108,
+                                                                            lineNumber: 104,
                                                                             columnNumber: 29
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1135,56 +1153,56 @@ const HowItWorks = ()=>{
                                                                             children: bullet
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                                            lineNumber: 109,
+                                                                            lineNumber: 105,
                                                                             columnNumber: 29
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, bIndex, true, {
                                                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                                    lineNumber: 107,
+                                                                    lineNumber: 103,
                                                                     columnNumber: 27
                                                                 }, ("TURBOPACK compile-time value", void 0)))
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                            lineNumber: 105,
+                                                            lineNumber: 101,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                    lineNumber: 98,
+                                                    lineNumber: 94,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/pages/HowItWorks.jsx",
-                                            lineNumber: 92,
+                                            lineNumber: 88,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/components/pages/HowItWorks.jsx",
-                                        lineNumber: 91,
+                                        lineNumber: 87,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, index, true, {
                                 fileName: "[project]/components/pages/HowItWorks.jsx",
-                                lineNumber: 62,
+                                lineNumber: 58,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0)))
                     }, void 0, false, {
                         fileName: "[project]/components/pages/HowItWorks.jsx",
-                        lineNumber: 60,
+                        lineNumber: 56,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                    lineNumber: 59,
+                    lineNumber: 55,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/components/pages/HowItWorks.jsx",
-                lineNumber: 58,
+                lineNumber: 54,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1194,14 +1212,14 @@ const HowItWorks = ()=>{
                         className: "absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-900 to-blue-900"
                     }, void 0, false, {
                         fileName: "[project]/components/pages/HowItWorks.jsx",
-                        lineNumber: 125,
+                        lineNumber: 120,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
                     }, void 0, false, {
                         fileName: "[project]/components/pages/HowItWorks.jsx",
-                        lineNumber: 126,
+                        lineNumber: 121,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1227,7 +1245,7 @@ const HowItWorks = ()=>{
                                     children: "Ready to Begin Your Journey?"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                    lineNumber: 135,
+                                    lineNumber: 130,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1235,98 +1253,72 @@ const HowItWorks = ()=>{
                                     children: "Take our free career assessment to get your personalized training pathway"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                    lineNumber: 138,
+                                    lineNumber: 133,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "flex flex-col sm:flex-row gap-4 justify-center",
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
                                             href: "/quiz",
-                                            legacyBehavior: true,
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                    size: "lg",
-                                                    className: "bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 text-lg rounded-full font-semibold shadow-xl hover:scale-105 transition-all duration-300",
-                                                    children: [
-                                                        "Take Career Quiz",
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
-                                                            className: "ml-2 w-5 h-5"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                            lineNumber: 149,
-                                                            columnNumber: 21
-                                                        }, ("TURBOPACK compile-time value", void 0))
-                                                    ]
-                                                }, void 0, true, {
+                                            size: "lg",
+                                            className: "bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 text-lg rounded-full font-semibold shadow-xl hover:scale-105 transition-all duration-300",
+                                            children: [
+                                                "Take Career Quiz",
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
+                                                    className: "ml-2 w-5 h-5"
+                                                }, void 0, false, {
                                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                    lineNumber: 144,
-                                                    columnNumber: 19
+                                                    lineNumber: 143,
+                                                    columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
-                                            }, void 0, false, {
-                                                fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                lineNumber: 143,
-                                                columnNumber: 17
-                                            }, ("TURBOPACK compile-time value", void 0))
-                                        }, void 0, false, {
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "[project]/components/pages/HowItWorks.jsx",
-                                            lineNumber: 142,
+                                            lineNumber: 137,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
                                             href: "/training",
-                                            legacyBehavior: true,
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                    size: "lg",
-                                                    variant: "outline",
-                                                    className: "border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 text-lg rounded-full font-semibold hover:scale-105 transition-all duration-300",
-                                                    children: [
-                                                        "View Training Options",
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$play$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PlayCircle$3e$__["PlayCircle"], {
-                                                            className: "ml-2 w-5 h-5"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                            lineNumber: 161,
-                                                            columnNumber: 21
-                                                        }, ("TURBOPACK compile-time value", void 0))
-                                                    ]
-                                                }, void 0, true, {
+                                            variant: "outline",
+                                            size: "lg",
+                                            className: "border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 text-lg rounded-full font-semibold hover:scale-105 transition-all duration-300",
+                                            children: [
+                                                "View Training Options",
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$play$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PlayCircle$3e$__["PlayCircle"], {
+                                                    className: "ml-2 w-5 h-5"
+                                                }, void 0, false, {
                                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                    lineNumber: 155,
-                                                    columnNumber: 19
+                                                    lineNumber: 153,
+                                                    columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
-                                            }, void 0, false, {
-                                                fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                lineNumber: 154,
-                                                columnNumber: 17
-                                            }, ("TURBOPACK compile-time value", void 0))
-                                        }, void 0, false, {
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "[project]/components/pages/HowItWorks.jsx",
-                                            lineNumber: 153,
+                                            lineNumber: 146,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                    lineNumber: 141,
+                                    lineNumber: 136,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/pages/HowItWorks.jsx",
-                            lineNumber: 129,
+                            lineNumber: 124,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/components/pages/HowItWorks.jsx",
-                        lineNumber: 128,
+                        lineNumber: 123,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/pages/HowItWorks.jsx",
-                lineNumber: 123,
+                lineNumber: 119,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1356,7 +1348,7 @@ const HowItWorks = ()=>{
                                     children: "Frequently Asked Questions"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                    lineNumber: 180,
+                                    lineNumber: 170,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1364,13 +1356,13 @@ const HowItWorks = ()=>{
                                     children: "Common questions about our training process"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                    lineNumber: 183,
+                                    lineNumber: 173,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/pages/HowItWorks.jsx",
-                            lineNumber: 173,
+                            lineNumber: 163,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1401,7 +1393,7 @@ const HowItWorks = ()=>{
                                                     children: item.q
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                    lineNumber: 199,
+                                                    lineNumber: 189,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1409,45 +1401,45 @@ const HowItWorks = ()=>{
                                                     children: item.a
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                                    lineNumber: 202,
+                                                    lineNumber: 192,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/pages/HowItWorks.jsx",
-                                            lineNumber: 198,
+                                            lineNumber: 188,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/components/pages/HowItWorks.jsx",
-                                        lineNumber: 197,
+                                        lineNumber: 187,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, index, false, {
                                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                                    lineNumber: 190,
+                                    lineNumber: 180,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0)))
                         }, void 0, false, {
                             fileName: "[project]/components/pages/HowItWorks.jsx",
-                            lineNumber: 188,
+                            lineNumber: 178,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/pages/HowItWorks.jsx",
-                    lineNumber: 172,
+                    lineNumber: 162,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/components/pages/HowItWorks.jsx",
-                lineNumber: 171,
+                lineNumber: 161,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/components/pages/HowItWorks.jsx",
-        lineNumber: 22,
+        lineNumber: 21,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };

@@ -1,6 +1,5 @@
 // components/pages/Home.jsx
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Button } from '../ui/button';
@@ -9,7 +8,6 @@ import { ArrowRight, TrendingUp, Users, Award, DollarSign } from 'lucide-react';
 import AnimatedCounter from '../Enhanced/AnimatedCounter';
 
 const Home = () => {
-  // Video path - video should be in public/videos/ folder
   const heroVideo = '/videos/hero-video.mp4';
 
   const stats = [
@@ -36,12 +34,10 @@ const features = [
     image: "/images/drone-certification-pathways-australia.jpg"  // Changed from dimg32.jpg
   }
 ];
+
   return (
     <div className="min-h-screen">
-      {/* Premium Hero Section with Video Background */}
       <section className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden bg-gray-900">
-
-        {/* Video Background Layer */}
         <div className="absolute inset-0 w-full h-full">
           <video
             autoPlay
@@ -49,21 +45,13 @@ const features = [
             muted
             playsInline
             className="w-full h-full object-cover"
-            onLoadedData={() => console.log('Video loaded successfully!')}
-            onError={(e) => {
-              console.error('Video failed to load from:', heroVideo);
-              console.error('Make sure hero-video.mp4 is in public/videos/ folder');
-            }}
           >
             <source src={heroVideo} type="video/mp4" />
-            Your browser does not support the video tag.
           </video>
         </div>
 
-        {/* Dark gradient overlay for better text visibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30 z-[1]" />
 
-        {/* Hero Content */}
         <div className="relative z-[2] w-full max-w-[840px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -71,7 +59,6 @@ const features = [
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-6"
           >
-            {/* Main Headline */}
             <motion.h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight"
               initial={{ opacity: 0, y: 20 }}
@@ -81,7 +68,6 @@ const features = [
               Stop dreaming, Start earning
             </motion.h1>
 
-            {/* Subheadline */}
             <motion.p
               className="text-lg sm:text-xl md:text-2xl font-normal text-white/90 leading-relaxed max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
@@ -91,41 +77,34 @@ const features = [
               While others wait, you fly. Get your licence now and lead in Australia's next wave of drone innovation
             </motion.p>
 
-            {/* CTA Buttons */}
             <motion.div
               className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <Link href="/quiz" legacyBehavior>
-                <a>
-                  <Button
-                    size="lg"
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg"
-                  >
-                    Take Career Quiz
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </a>
-              </Link>
+              <Button
+                href="/quiz"
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg"
+              >
+                Take Career Quiz
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
 
-              <Link href="/how-it-works" legacyBehavior>
-                <a>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="border-white text-white hover:bg-white hover:text-slate-900 px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                  >
-                    Learn More
-                  </Button>
-                </a>
-              </Link>
+              <Button
+                href="/how-it-works"
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-slate-900 px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              >
+                Learn More
+              </Button>
             </motion.div>
           </motion.div>
         </div>
       </section>
-      {/* Stats Section */}
+
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -160,7 +139,7 @@ const features = [
           </div>
         </div>
       </section>
-      {/* Features Section */}
+
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -208,9 +187,8 @@ const features = [
           </div>
         </div>
       </section>
-      {/* Enhanced CTA Section */}
+
       <section className="py-24 relative overflow-hidden">
-        {/* Enhanced background with gradient and pattern */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 
@@ -228,17 +206,14 @@ const features = [
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto font-light">
               Join thousands of successful graduates who've transformed their careers with drone technology
             </p>
-            <Link href="/quiz" legacyBehavior>
-              <a>
-                <Button
-                  size="lg"
-                  className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-xl font-semibold"
-                >
-                  Start Your Journey
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </a>
-            </Link>
+            <Button
+              href="/quiz"
+              size="lg"
+              className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-xl font-semibold"
+            >
+              Start Your Journey
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
           </motion.div>
         </div>
       </section>

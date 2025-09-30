@@ -204,3 +204,18 @@ code {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
+/* Fix for quiz button text visibility */
+button, button * {
+  color: #0f172a !important;
+}
+
+div[style*="cursor: pointer"] * {
+  color: #0f172a !important;
+}
+/* FORCE QUIZ TEXT TO BE VISIBLE */
+.quiz-option,
+.quiz-option *,
+.quiz-option p,
+.quiz-option div {
+  color: #0f172a !important;
+}

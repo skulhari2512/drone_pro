@@ -1,6 +1,6 @@
 // pages/industry-uses.js
 import { NextSeo } from 'next-seo';
-//import Layout from '../components/Layout/Layout';
+import Layout from '../components/Layout/Layout';
 import IndustryUses from '../components/pages/IndustryUses';
 
 export default function IndustryUsesPage() {
@@ -25,7 +25,7 @@ export default function IndustryUsesPage() {
 }
 
 IndustryUsesPage.getLayout = function getLayout(page) {
-  return page;
+  return <Layout>{page}</Layout>;
 };
 
 export async function getStaticProps() {

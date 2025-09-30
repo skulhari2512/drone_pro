@@ -25,7 +25,6 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo - Updated for Next.js 15 */}
           <Link href="/" className="flex items-center space-x-2 group">
             <div className="flex items-center space-x-3">
               {!imageError ? (
@@ -51,7 +50,6 @@ const Header = () => {
             </div>
           </Link>
 
-          {/* Desktop Navigation - Updated for Next.js 15 */}
           <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
               <Link
@@ -71,16 +69,12 @@ const Header = () => {
             ))}
           </div>
 
-          {/* CTA Button - Updated for Next.js 15 */}
           <div className="hidden md:flex items-center">
-            <Link href="/quiz">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all duration-200">
-                Get Started
-              </Button>
-            </Link>
+            <Button href="/quiz" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all duration-200">
+              Get Started
+            </Button>
           </div>
 
-          {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -91,7 +85,6 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation - Updated for Next.js 15 */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
@@ -117,11 +110,13 @@ const Header = () => {
                   </Link>
                 ))}
                 <div className="pt-3 border-t border-slate-200">
-                  <Link href="/quiz" onClick={() => setIsMenuOpen(false)}>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium">
-                      Get Started
-                    </Button>
-                  </Link>
+                  <Button 
+                    href="/quiz" 
+                    onClick={() => setIsMenuOpen(false)}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium"
+                  >
+                    Get Started
+                  </Button>
                 </div>
               </div>
             </motion.div>

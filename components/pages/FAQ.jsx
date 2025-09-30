@@ -1,6 +1,5 @@
 // components/pages/FAQ.jsx
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '../ui/card';
 import { Input } from '../ui/input';
@@ -20,7 +19,6 @@ const FAQ = () => {
     ...howItWorksData.faq.map(faq => ({ ...faq, category: 'How It Works' })),
     ...industryData.faq.map(faq => ({ ...faq, category: 'Industries' })),
     ...trainingData.faq.map(faq => ({ ...faq, category: 'Training' })),
-    // Additional common FAQs
     {
       q: "How long does it take to become a certified drone pilot?",
       a: "The timeline depends on your chosen certification path. RPA accreditation can be completed in a few hours online, RePL certification typically takes 5 days of intensive training, and ReOC business certification requires 2-3 weeks including application processing.",
@@ -53,10 +51,8 @@ const FAQ = () => {
     }
   ];
 
-  // Categories for filtering
   const categories = ['All', 'General', 'How It Works', 'Industries', 'Training', 'Equipment', 'Support', 'Earning', 'Legal', 'Business'];
 
-  // Toggle expanded state
   const toggleExpanded = (index) => {
     const newExpanded = new Set(expandedItems);
     if (newExpanded.has(index)) {
@@ -67,7 +63,6 @@ const FAQ = () => {
     setExpandedItems(newExpanded);
   };
 
-  // Filter FAQs based on search and category
   const filteredFAQs = allFAQs.filter(faq => {
     const matchesSearch = searchQuery === '' ||
       faq.q.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -104,7 +99,6 @@ const FAQ = () => {
       <section className="py-8 bg-white border-b">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-4">
-            {/* Search Bar */}
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
               <Input
@@ -116,7 +110,6 @@ const FAQ = () => {
               />
             </div>
 
-            {/* Category Filter */}
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
@@ -130,7 +123,6 @@ const FAQ = () => {
             </select>
           </div>
 
-          {/* Results Count */}
           {searchQuery && (
             <p className="mt-4 text-sm text-slate-600">
               Found {filteredFAQs.length} result{filteredFAQs.length !== 1 ? 's' : ''}
@@ -181,7 +173,6 @@ const FAQ = () => {
                               <h3 className="text-lg font-semibold text-slate-900 mb-2">
                                 {faq.q}
                               </h3>
-                              {/* Category Badge */}
                               <span className="inline-block px-2 py-1 text-xs font-medium bg-slate-100 text-slate-600 rounded-full mb-3">
                                 {faq.category}
                               </span>
@@ -197,7 +188,6 @@ const FAQ = () => {
                         </button>
                       </div>
 
-                      {/* Expandable Answer */}
                       {expandedItems.has(index) && (
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
@@ -236,21 +226,21 @@ const FAQ = () => {
               Our expert team is here to help you with personalized guidance
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" legacyBehavior>
-                <a>
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full">
-                    Contact Us
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </a>
-              </Link>
-              <Link href="/quiz" legacyBehavior>
-                <a>
-                  <Button variant="outline" className="px-6 py-3 rounded-full">
-                    Take Career Quiz
-                  </Button>
-                </a>
-              </Link>
+              <Button
+                href="/contact"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full"
+              >
+                Contact Us
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+              
+              <Button
+                href="/quiz"
+                variant="outline"
+                className="px-6 py-3 rounded-full"
+              >
+                Take Career Quiz
+              </Button>
             </div>
           </motion.div>
         </div>

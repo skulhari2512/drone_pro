@@ -25,6 +25,10 @@ export default function PlanPage() {
     );
 }
 
+// Apply layout to this page
+PlanPage.getLayout = function getLayout(page) {
+    return <Layout>{page}</Layout>;
+};
 
 // Use Server-Side Rendering for personalized content
 export async function getServerSideProps(context) {

@@ -1,17 +1,16 @@
 // components/pages/Quiz.jsx
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import { Progress } from '../ui/progress';
 import { Input } from '../ui/input';
-import { ArrowRight, ArrowLeft, CheckCircle, X, Download, RotateCcw } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle, X, Download, RotateCcw, Sparkles, FileText } from 'lucide-react';
 import { v4 as uuidv4 } from 'uuid';
 import { useToast } from '../../hooks/use-toast';
-import { apiService } from '../../services/api';
 import { supabase } from '../../lib/supabase';
+import { apiService } from '../../services/api';
 import {
   mockQuizQuestions,
   saveQuizProgress,
@@ -59,7 +58,6 @@ const Quiz = () => {
     };
     setAnswers(newAnswers);
     saveQuizProgress(newAnswers);
-    console.log('newAnswers :>> ', newAnswers);
 
     if (isLastQuestion) {
       setShowCongratulationsPopup(true);
@@ -94,8 +92,21 @@ const Quiz = () => {
   };
 
   const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const validatePhone = (phone) => /^(\+61|0)[2-478](\s?\d{4}){2}$/.test(phone.replace(/\s/g, ''));
 
+  const validatePhone = (phone) => {
+    const cleanPhone = phone.replace(/\D/g, '');
+    
+    if (/^04\d{8}$/.test(cleanPhone)) return true;
+    if (/^0[2378]\d{8}$/.test(cleanPhone)) return true;
+    
+    if (phone.startsWith('+61')) {
+      const intlPhone = cleanPhone.substring(2);
+      if (/^4\d{8}$/.test(intlPhone)) return true;
+      if (/^[2378]\d{8}$/.test(intlPhone)) return true;
+    }
+    
+    return false;
+  };
 
   const handleDownloadPDF = async () => {
     if (!formData.name || !formData.email || !formData.phone) {
@@ -138,14 +149,11 @@ const Quiz = () => {
     
     try {
       const uniqueId = uuidv4();
-      
-      // Generate personalized plan data
       const generatedPlan = generatePersonalizedPlan(answers);
       const recommendedCourseDetails = generatedPlan.recommendedCourses.map(
         (key) => droneCourseCatalog[key]
       );
       
-      // Map quiz answers to readable text
       const selectedTexts = Object.entries(answers).reduce((acc, [questionId, answerValue]) => {
         const question = mockQuizQuestions.find(q => q.id === Number(questionId));
         if (!question) return acc;
@@ -157,7 +165,6 @@ const Quiz = () => {
         return acc;
       }, {});
       
-      // Save to database
       const { error } = await supabase
         .from('status_checks')
         .insert([{
@@ -168,7 +175,6 @@ const Quiz = () => {
 
       if (error) throw error;
 
-      // Send email with plan data
       const response = await apiService.downloadPDF({
         fullName: formData.name,
         email: formData.email,
@@ -187,11 +193,15 @@ const Quiz = () => {
 
       toast({
         title: "Success!",
-        description: response.data.message || "Your personalized career plan will be sent to your email shortly.",
+        description: "Redirecting to your personalized plan...",
       });
 
-      // Clear quiz progress after successful submission
-      clearQuizProgress();
+      localStorage.setItem('quizId', uniqueId);
+      setShowCongratulationsPopup(false);
+
+      setTimeout(() => {
+        router.push(`/plan?quizId=${uniqueId}`);
+      }, 1000);
 
     } catch (error) {
       console.error('Download error:', error);
@@ -226,260 +236,426 @@ const Quiz = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl">
-        {/* Header with Progress */}
+      <style jsx>{`
+        .custom-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          white-space: nowrap;
+          font-weight: 700;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          border: none;
+          outline: none;
+        }
+        
+        .custom-button:focus {
+          outline: 2px solid #3b82f6;
+          outline-offset: 2px;
+        }
+        
+        .custom-button:disabled {
+          pointer-events: none;
+          opacity: 0.5;
+        }
+        
+        .btn-outline {
+          background-color: white;
+          color: #475569;
+          border: 2px solid #e2e8f0;
+        }
+        
+        .btn-outline:hover:not(:disabled) {
+          background-color: #f8fafc;
+          border-color: #94a3b8;
+        }
+        
+        .btn-primary {
+          background: linear-gradient(to right, #2563eb, #1d4ed8, #1e40af);
+          color: white;
+          border: none;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+          background: linear-gradient(to right, #1d4ed8, #1e40af, #1e3a8a);
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .btn-primary:disabled {
+          background: linear-gradient(to right, #94a3b8, #64748b);
+        }
+        
+        .btn-ghost {
+          background: linear-gradient(to right, #fffbeb, #ffedd5);
+          color: #b45309;
+          border: 2px solid #fcd34d;
+        }
+        
+        .btn-ghost:hover:not(:disabled) {
+          background: linear-gradient(to right, #fef3c7, #fed7aa);
+          border-color: #f59e0b;
+          color: #92400e;
+        }
+        
+        .btn-success {
+          background: linear-gradient(to right, #059669, #047857);
+          color: white;
+          border: none;
+        }
+        
+        .btn-success:hover:not(:disabled) {
+          background: linear-gradient(to right, #047857, #065f46);
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-success:disabled {
+          background: linear-gradient(to right, #94a3b8, #64748b);
+        }
+      `}</style>
+      
+      <div className="w-full max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-8"
+          className="mb-8 space-y-4"
         >
-          <div className="flex justify-between items-center mb-4">
-            <h1 className="text-2xl font-bold text-slate-900">Career Assessment Quiz</h1>
-            <span className="text-sm font-medium text-slate-600">
-              {currentQuestion + 1} of {mockQuizQuestions.length}
-            </span>
+          <div className="flex justify-between items-center">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+              Career Assessment Quiz
+            </h1>
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-semibold text-slate-600 bg-white px-5 py-2.5 rounded-full shadow-md border border-slate-200">
+                Question {currentQuestion + 1} of {mockQuizQuestions.length}
+              </span>
+            </div>
           </div>
-          <Progress value={progress} className="h-2 bg-slate-200" />
+          
+          <div className="relative">
+            <div className="h-4 bg-slate-200 rounded-full overflow-hidden shadow-inner">
+              <motion.div 
+                className="h-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 rounded-full relative"
+                initial={{ width: 0 }}
+                animate={{ width: `${progress}%` }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20"></div>
+              </motion.div>
+            </div>
+            <motion.div 
+              className="absolute -top-1 text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full border-2 border-blue-200"
+              style={{ left: `calc(${progress}% - 30px)` }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              {Math.round(progress)}%
+            </motion.div>
+          </div>
         </motion.div>
 
-        {/* Question Card */}
         <motion.div
           key={currentQuestion}
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <Card className="bg-white shadow-xl rounded-2xl border-0">
-            <CardContent className="p-8">
-              <h2 className="text-xl font-semibold text-slate-900 mb-6">
+          <Card className="bg-white shadow-2xl rounded-3xl border border-slate-100">
+            <CardContent className="p-10">
+              <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-blue-200">
+                <Sparkles className="w-4 h-4" />
+                Question {currentQuestion + 1}
+              </div>
+
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 leading-tight">
                 {question.question}
               </h2>
 
               {question.subtitle && (
-                <p className="text-slate-600 mb-6">{question.subtitle}</p>
+                <p className="text-slate-600 mb-8 text-lg">{question.subtitle}</p>
               )}
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {question.options.map((option) => (
-                  <motion.button
+                  <div
                     key={option.value}
+                    className="quiz-option"
                     onClick={() => handleAnswerSelect(option.value)}
-                    className={`w-full p-4 text-left rounded-xl border-2 transition-all duration-200 ${selectedOption === option.value
-                        ? 'border-blue-500 bg-blue-50 shadow-md'
-                        : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'
-                      }`}
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
+                    style={{
+                      backgroundColor: selectedOption === option.value ? '#eff6ff' : '#ffffff',
+                      border: selectedOption === option.value ? '2px solid #3b82f6' : '2px solid #e2e8f0',
+                      borderRadius: '16px',
+                      padding: '24px',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s',
+                      boxShadow: selectedOption === option.value ? '0 20px 25px -5px rgba(0, 0, 0, 0.1)' : 'none'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (selectedOption !== option.value) {
+                        e.currentTarget.style.borderColor = '#93c5fd';
+                        e.currentTarget.style.backgroundColor = '#f8fafc';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (selectedOption !== option.value) {
+                        e.currentTarget.style.borderColor = '#e2e8f0';
+                        e.currentTarget.style.backgroundColor = '#ffffff';
+                      }
+                    }}
                   >
-                    <div className="flex items-start">
-                      <div className={`w-5 h-5 rounded-full border-2 mr-3 mt-0.5 flex items-center justify-center ${selectedOption === option.value
-                          ? 'border-blue-500 bg-blue-500'
-                          : 'border-slate-300'
-                        }`}>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                      <div style={{
+                        width: '28px',
+                        height: '28px',
+                        borderRadius: '50%',
+                        border: selectedOption === option.value ? '2px solid #3b82f6' : '2px solid #cbd5e1',
+                        backgroundColor: selectedOption === option.value ? '#3b82f6' : 'transparent',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0
+                      }}>
                         {selectedOption === option.value && (
-                          <div className="w-2 h-2 bg-white rounded-full" />
+                          <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ffffff' }} />
                         )}
                       </div>
-                      <div className="flex-1">
-                        <p className="font-medium text-slate-900">{option.text}</p>
+                      
+                      <div style={{ flex: 1 }}>
+                        <p style={{ 
+                          fontWeight: 'bold', 
+                          fontSize: '20px', 
+                          marginBottom: '4px',
+                          color: '#0f172a',
+                          lineHeight: '1.4'
+                        }}>
+                          {option.text}
+                        </p>
                         {option.description && (
-                          <p className="text-sm text-slate-600 mt-1">{option.description}</p>
+                          <p style={{ 
+                            fontSize: '14px', 
+                            marginTop: '8px',
+                            color: '#64748b',
+                            lineHeight: '1.5'
+                          }}>
+                            {option.description}
+                          </p>
                         )}
                       </div>
+
+                      {selectedOption === option.value && (
+                        <CheckCircle style={{ width: '24px', height: '24px', color: '#3b82f6', flexShrink: 0 }} />
+                      )}
                     </div>
-                  </motion.button>
+                  </div>
                 ))}
               </div>
             </CardContent>
           </Card>
         </motion.div>
 
-        {/* Navigation Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex justify-between mt-8"
+          className="flex items-center justify-between gap-4 mt-8"
         >
-          <Button
+          <button
             onClick={handlePrevious}
-            variant="outline"
-            className="px-6 py-3 rounded-full"
             disabled={currentQuestion === 0}
+            className="custom-button btn-outline px-8 py-4 rounded-2xl text-base shadow-md hover:shadow-xl"
           >
-            <ArrowLeft className="mr-2 w-4 h-4" />
+            <ArrowLeft className="mr-2 w-5 h-5" style={{ transition: 'transform 0.3s' }} />
             Previous
-          </Button>
+          </button>
 
-          {currentQuestion > 0 && currentQuestion < mockQuizQuestions.length - 1 && (
-            <Button
-              onClick={handleStartOver}
-              variant="ghost"
-              className="px-6 py-3 rounded-full text-slate-600"
-            >
-              <RotateCcw className="mr-2 w-4 h-4" />
-              Start Over
-            </Button>
-          )}
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 bg-white px-6 py-4 rounded-2xl shadow-md border border-slate-200">
+              {mockQuizQuestions.map((_, index) => (
+                <div
+                  key={index}
+                  className={`transition-all duration-500 rounded-full ${
+                    index < currentQuestion
+                      ? 'w-3 h-3 bg-green-500 shadow-md'
+                      : index === currentQuestion
+                      ? 'w-4 h-4 bg-blue-600 shadow-lg ring-2 ring-blue-200'
+                      : 'w-2 h-2 bg-slate-300'
+                  }`}
+                />
+              ))}
+            </div>
 
-          <Button
+            {currentQuestion > 0 && (
+              <button
+                onClick={handleStartOver}
+                className="custom-button btn-ghost px-6 py-4 rounded-2xl text-base shadow-md hover:shadow-xl"
+              >
+                <RotateCcw className="mr-2 w-5 h-5" style={{ transition: 'transform 0.5s' }} />
+                Restart
+              </button>
+            )}
+          </div>
+
+          <button
             onClick={handleNext}
             disabled={!selectedOption}
-            className="px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white"
+            className="custom-button btn-primary px-8 py-4 rounded-2xl text-base shadow-xl hover:shadow-2xl relative overflow-hidden"
           >
-            {isLastQuestion ? 'Complete' : 'Next'}
-            <ArrowRight className="ml-2 w-4 h-4" />
-          </Button>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 hover:opacity-20 transition-opacity" style={{ pointerEvents: 'none' }}></div>
+            {isLastQuestion ? (
+              <>
+                <Sparkles className="mr-2 w-6 h-6" />
+                View My Plan
+              </>
+            ) : (
+              <>
+                Continue
+                <ArrowRight className="ml-2 w-6 h-6" />
+              </>
+            )}
+          </button>
         </motion.div>
 
-        {/* Progress Indicator Dots */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex justify-center mt-12"
+          className="mt-8 text-center"
         >
-          <div className="flex space-x-2">
-            {mockQuizQuestions.map((_, index) => (
-              <div
-                key={index}
-                className={`w-2 h-2 rounded-full transition-colors duration-300 ${index < currentQuestion
-                    ? 'bg-green-500'
-                    : index === currentQuestion
-                      ? 'bg-slate-900'
-                      : 'bg-slate-300'
-                  }`}
-              />
-            ))}
-          </div>
+          <p className="text-sm text-slate-500">
+            Your progress is automatically saved • Takes approximately 2-3 minutes
+          </p>
         </motion.div>
       </div>
 
-      {/* Congratulations Popup */}
       <AnimatePresence>
         {showCongratulationsPopup && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50"
               onClick={() => setShowCongratulationsPopup(false)}
             />
 
-            {/* Popup */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: 20 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.3, type: "spring" }}
               className="fixed inset-0 z-50 flex items-center justify-center p-4"
             >
-              <Card className="w-full max-w-md bg-white rounded-2xl shadow-2xl">
-                <CardContent className="p-8 relative">
-                  {/* Close Button */}
+              <Card className="w-full max-w-lg bg-white rounded-3xl shadow-2xl">
+                <CardContent className="p-10 relative">
                   <button
                     onClick={handleClosePopup}
-                    className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
+                    className="absolute top-6 right-6 p-2 rounded-full hover:bg-slate-100 transition-colors"
                   >
-                    <X className="w-5 h-5 text-gray-500" />
+                    <X className="w-6 h-6 text-slate-500" />
                   </button>
 
-                  {/* Success Icon */}
-                  <div className="text-center mb-6">
-                    <div className="inline-flex p-4 rounded-full bg-green-50 mb-4 border border-green-200">
-                      <CheckCircle className="w-8 h-8 text-green-600" />
-                    </div>
-                    <h2 className="text-2xl font-bold text-slate-900 mb-2">
+                  <div className="text-center mb-8">
+                    <motion.div 
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                      className="inline-flex p-5 rounded-full bg-gradient-to-br from-green-50 to-green-100 mb-6 border-2 border-green-200"
+                    >
+                      <CheckCircle className="w-12 h-12 text-green-600" />
+                    </motion.div>
+                    <h2 className="text-3xl font-bold text-slate-900 mb-3">
                       Congratulations!
                     </h2>
-                    <p className="text-slate-600">
+                    <p className="text-slate-600 text-lg">
                       You've completed the career assessment. Get your personalized drone career plan now!
                     </p>
                   </div>
 
-                  {/* Form */}
-                  <div className="space-y-4">
+                  <div className="space-y-5">
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">
-                        Name *
+                      <label className="block text-sm font-semibold text-slate-700 mb-2">
+                        Full Name *
                       </label>
                       <Input
                         type="text"
                         value={formData.name}
                         onChange={(e) => handleFormChange('name', e.target.value)}
-                        placeholder="Your full name"
-                        className="w-full"
+                        placeholder="John Smith"
+                        className="w-full h-12 text-base rounded-xl border-2 focus:border-blue-500 transition-colors"
                         required
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">
-                        Email *
+                      <label className="block text-sm font-semibold text-slate-700 mb-2">
+                        Email Address *
                       </label>
                       <Input
                         type="email"
                         value={formData.email}
                         onChange={(e) => handleFormChange('email', e.target.value)}
-                        placeholder="your@email.com"
-                        className="w-full"
+                        placeholder="john@example.com"
+                        className="w-full h-12 text-base rounded-xl border-2 focus:border-blue-500 transition-colors"
                         required
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">
-                        Phone *
+                      <label className="block text-sm font-semibold text-slate-700 mb-2">
+                        Phone Number *
                       </label>
                       <Input
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => handleFormChange('phone', e.target.value)}
-                        placeholder="Your phone number"
-                        className="w-full"
+                        placeholder="0400 000 000"
+                        className="w-full h-12 text-base rounded-xl border-2 focus:border-blue-500 transition-colors"
                         required
                       />
                     </div>
 
-                    <div className="flex items-center">
+                    <div className="flex items-start pt-2">
                       <input
                         type="checkbox"
                         id="agreeToShare"
                         checked={agreeToShare}
                         onChange={(e) => setAgreeToShare(e.target.checked)}
-                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                        className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-0.5 cursor-pointer"
                       />
-                      <label htmlFor="agreeToShare" className="ml-2 block text-sm text-slate-700">
+                      <label htmlFor="agreeToShare" className="ml-3 block text-sm text-slate-700 leading-relaxed cursor-pointer">
                         I agree to receive my personalized career plan and training information
                       </label>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex gap-3 mt-6">
-                      <Button
+                    <div className="flex gap-4 mt-8">
+                      <button
                         onClick={handleClosePopup}
-                        variant="outline"
-                        className="flex-1"
+                        className="custom-button btn-outline flex-1 h-14 text-base rounded-xl shadow-md hover:shadow-lg"
                       >
-                        Cancel
-                      </Button>
-                      <Button
+                        <X className="mr-2 w-5 h-5" />
+                        Go Back
+                      </button>
+                      <button
                         onClick={handleDownloadPDF}
                         disabled={isDownloading}
-                        className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
+                        className="custom-button btn-success flex-1 h-14 text-base rounded-xl shadow-lg hover:shadow-xl"
                       >
                         {isDownloading ? (
-                          <>Processing...</>
+                          <span className="flex items-center">
+                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Generating...
+                          </span>
                         ) : (
                           <>
+                            <Sparkles className="mr-2 w-5 h-5" />
                             Get My Plan
-                            <Download className="ml-2 w-4 h-4" />
+                            <FileText className="ml-2 w-5 h-5" />
                           </>
                         )}
-                      </Button>
+                      </button>
                     </div>
                   </div>
                 </CardContent>
