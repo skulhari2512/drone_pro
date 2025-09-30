@@ -10,13 +10,6 @@ import AnimatedCounter from '../Enhanced/AnimatedCounter';
 const Home = () => {
   const heroVideo = '/videos/hero-video.mp4';
 
-  const stats = [
-    { icon: Users, value: "40,000", label: "Successful Graduates", color: "text-blue-600" },
-    { icon: DollarSign, value: "$75-400", label: "Hourly Earning Range", color: "text-green-600" },
-    { icon: TrendingUp, value: "77%", label: "Industry Growth", color: "text-purple-600" },
-    { icon: Award, value: "1,200+", label: "Training Hours Delivered", color: "text-orange-600" }
-  ];
-
 const features = [
   {
     title: "Professional Assessment",
