@@ -7,7 +7,7 @@ export const mockQuizQuestions = [
       { id: 'a', text: "I'm excited about the future of technology and innovation", value: 'technology' },
       { id: 'b', text: 'I see strong career and business opportunities in this space', value: 'career' },
       { id: 'c', text: 'I want to use drones in photography, film, or creative storytelling', value: 'creative' },
-      { id: 'd', text: 'I care about the environment and want to support sustainability (e.g. precision ag, land care)', value: 'environmental' },
+      { id: 'd', text: 'I care about the environment and want to support sustainability (e.g. precision agriculture, land care)', value: 'environmental' },
       { id: 'e', text: "Other - my path is unique, and I'll explain it later", value: 'other' }
     ]
   },
