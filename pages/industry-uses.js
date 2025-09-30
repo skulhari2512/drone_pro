@@ -1,6 +1,6 @@
 // pages/industry-uses.js
 import { NextSeo } from 'next-seo';
-import Layout from '../components/Layout/Layout';
+import Layout from '../components/layout/Layout';
 import IndustryUses from '../components/pages/IndustryUses';
 
 export default function IndustryUsesPage() {

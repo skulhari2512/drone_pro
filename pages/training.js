@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo';
-import Layout from '../components/Layout/Layout';
+import Layout from '../components/layout/Layout';
 import Training from '../components/pages/Training';
 
 export default function TrainingPage() {

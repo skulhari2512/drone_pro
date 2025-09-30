@@ -1,6 +1,6 @@
 // pages/quiz.js
 import { NextSeo } from 'next-seo';
-import Layout from '../components/Layout/Layout';
+import Layout from '../components/layout/Layout';
 import Quiz from '../components/pages/Quiz';
 
 export default function QuizPage() {
