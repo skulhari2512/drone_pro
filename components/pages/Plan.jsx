@@ -34,6 +34,8 @@ import { getQuizProgress, generatePersonalizedPlan, droneCourseCatalog, mockQuiz
 const COURSE_IMAGES = {
   'remote-pilot-licence': '/images/drone-certification-exam-preparation.jpg',
   'multi-rotor-operations': '/images/aircraft-radio-operator-certificate-training.jpg',
+  'multi-rotor-7-25kg-operations': '/images/aircraft-radio-operator-certificate-training.jpg',
+  'aroc-aircraft-radio-operator-certificate': '/images/aircraft-radio-operator-certificate-training.jpg',
   'aroc-aircraft-radio-operator-certificate': '/images/aircraft-radio-operator-certificate-training.jpg',
   'commercial-operations': '/images/civil-engineering-drone-surveying-training.jpg',
   'advanced-training': '/images/real-estate-aerial-photography-drone-course.jpg',
