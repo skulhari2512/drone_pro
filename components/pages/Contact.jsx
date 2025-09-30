@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
@@ -94,9 +93,6 @@ const Contact = () => {
         inquiryType: ''
       });
 
-      // Optional: Redirect to thank you page or quiz
-      // router.push('/thank-you');
-
     } catch (error) {
       console.error('Error submitting form:', error);
       toast({
@@ -109,9 +105,81 @@ const Contact = () => {
     }
   };
 
-  // Rest of your component remains the same...
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+      <style jsx>{`
+        .modern-button {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          padding: 1rem 2rem;
+          font-size: 1rem;
+          font-weight: 700;
+          color: white;
+          background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+          border: none;
+          border-radius: 1rem;
+          cursor: pointer;
+          overflow: hidden;
+          transition: all 0.3s ease;
+          box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3), 0 8px 10px -6px rgba(59, 130, 246, 0.2);
+        }
+        
+        .modern-button:hover:not(:disabled) {
+          transform: translateY(-2px);
+          box-shadow: 0 20px 35px -5px rgba(59, 130, 246, 0.4), 0 10px 15px -6px rgba(59, 130, 246, 0.3);
+        }
+        
+        .modern-button:active:not(:disabled) {
+          transform: translateY(0);
+        }
+        
+        .modern-button:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+          background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+        }
+        
+        .modern-button::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+          transition: left 0.5s ease;
+        }
+        
+        .modern-button:hover:not(:disabled)::before {
+          left: 100%;
+        }
+        
+        .modern-button .button-content {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+        }
+        
+        .spinner {
+          width: 18px;
+          height: 18px;
+          border: 3px solid rgba(255, 255, 255, 0.3);
+          border-top-color: white;
+          border-radius: 50%;
+          animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
+
       {/* Hero Section */}
       <section className="relative py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
@@ -143,14 +211,15 @@ const Contact = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-2xl">Send Us a Message</CardTitle>
+            <Card className="shadow-xl border-0 rounded-3xl">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-3xl font-bold text-slate-900">Send Us a Message</CardTitle>
+                <p className="text-slate-600 text-sm mt-2">Fill out the form below and we'll get back to you within 24 hours</p>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
                       Name *
                     </label>
                     <Input
@@ -158,12 +227,13 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="Your full name"
+                      className="h-12 rounded-xl border-2 focus:border-blue-500 transition-colors"
                       required
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
                       Email *
                     </label>
                     <Input
@@ -172,12 +242,13 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="your@email.com"
+                      className="h-12 rounded-xl border-2 focus:border-blue-500 transition-colors"
                       required
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
                       Phone *
                     </label>
                     <Input
@@ -186,16 +257,17 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="Your phone number"
+                      className="h-12 rounded-xl border-2 focus:border-blue-500 transition-colors"
                       required
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
                       Inquiry Type
                     </label>
                     <Select value={formData.inquiryType} onValueChange={handleSelectChange}>
-                      <SelectTrigger>
+                      <SelectTrigger className="h-12 rounded-xl border-2">
                         <SelectValue placeholder="Select inquiry type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -208,7 +280,7 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
                       Message *
                     </label>
                     <Textarea
@@ -217,24 +289,30 @@ const Contact = () => {
                       onChange={handleInputChange}
                       placeholder="Tell us about your drone career goals..."
                       rows={5}
+                      className="rounded-xl border-2 focus:border-blue-500 transition-colors resize-none"
                       required
                     />
                   </div>
 
-                  <Button
+                  <button
                     type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                    className="modern-button"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? (
-                      <>Sending...</>
-                    ) : (
-                      <>
-                        Send Message
-                        <Send className="ml-2 h-4 w-4" />
-                      </>
-                    )}
-                  </Button>
+                    <span className="button-content">
+                      {isSubmitting ? (
+                        <>
+                          <div className="spinner"></div>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Send Message
+                          <Send className="w-5 h-5" />
+                        </>
+                      )}
+                    </span>
+                  </button>
                 </form>
               </CardContent>
             </Card>
@@ -248,47 +326,85 @@ const Contact = () => {
             className="space-y-6"
           >
             {/* Contact Details Card */}
-            <Card>
+            <Card className="shadow-xl border-0 rounded-3xl">
               <CardHeader>
-                <CardTitle className="text-2xl">Contact Information</CardTitle>
+                <CardTitle className="text-2xl font-bold text-slate-900">Contact Information</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <Mail className="w-5 h-5 text-blue-600 mt-1" />
+              <CardContent className="space-y-6">
+                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-blue-50 border-2 border-blue-100 transition-all hover:border-blue-300">
+                  <div className="p-3 rounded-xl bg-blue-100">
+                    <Mail className="w-6 h-6 text-blue-600" />
+                  </div>
                   <div>
-                    <p className="font-medium">Email</p>
+                    <p className="font-bold text-slate-900 mb-1">Email</p>
                     <p className="text-slate-600">cooper@dronecareerpro.au</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-3">
-                  <Phone className="w-5 h-5 text-blue-600 mt-1" />
+                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-100 transition-all hover:border-emerald-300">
+                  <div className="p-3 rounded-xl bg-emerald-100">
+                    <Phone className="w-6 h-6 text-emerald-600" />
+                  </div>
                   <div>
-                    <p className="font-medium">Phone</p>
+                    <p className="font-bold text-slate-900 mb-1">Phone</p>
                     <p className="text-slate-600">Available upon request</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-3">
-                  <MapPin className="w-5 h-5 text-blue-600 mt-1" />
+                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-purple-50 border-2 border-purple-100 transition-all hover:border-purple-300">
+                  <div className="p-3 rounded-xl bg-purple-100">
+                    <MapPin className="w-6 h-6 text-purple-600" />
+                  </div>
                   <div>
-                    <p className="font-medium">Coverage</p>
+                    <p className="font-bold text-slate-900 mb-1">Coverage</p>
                     <p className="text-slate-600">Nationwide Training Network across Australia</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-3">
-                  <Clock className="w-5 h-5 text-blue-600 mt-1" />
+                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-amber-50 border-2 border-amber-100 transition-all hover:border-amber-300">
+                  <div className="p-3 rounded-xl bg-amber-100">
+                    <Clock className="w-6 h-6 text-amber-600" />
+                  </div>
                   <div>
-                    <p className="font-medium">Response Time</p>
+                    <p className="font-bold text-slate-900 mb-1">Response Time</p>
                     <p className="text-slate-600">We typically respond within 24 hours</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Why Choose Us Card - keeping your existing content */}
-            {/* Add the rest of your existing cards here */}
+            {/* Trust Indicators */}
+            <Card className="shadow-xl border-0 rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-50">
+              <CardContent className="p-6">
+                <h3 className="font-bold text-lg text-slate-900 mb-4">Why Choose Us?</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-blue-100">
+                      <Award className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <span className="text-sm text-slate-700">CASA Certified Training</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-emerald-100">
+                      <Users className="w-5 h-5 text-emerald-600" />
+                    </div>
+                    <span className="text-sm text-slate-700">500+ Successful Students</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-purple-100">
+                      <Shield className="w-5 h-5 text-purple-600" />
+                    </div>
+                    <span className="text-sm text-slate-700">100% Pass Rate Guarantee</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-amber-100">
+                      <Star className="w-5 h-5 text-amber-600" />
+                    </div>
+                    <span className="text-sm text-slate-700">4.9/5 Student Rating</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </motion.div>
         </div>
       </section>
