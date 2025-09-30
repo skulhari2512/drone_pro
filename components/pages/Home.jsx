@@ -98,40 +98,6 @@ const features = [
         </div>
       </section>
 
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="text-center"
-                >
-                  <div className={`inline-flex p-3 rounded-full bg-slate-100 ${stat.color} mb-4`}>
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <div className="text-3xl font-bold text-slate-900">
-                    {stat.value.includes(',') ? (
-                      <AnimatedCounter
-                        end={parseInt(stat.value.replace(/,/g, '').replace(/\D/g, ''))}
-                        duration={2}
-                      />
-                    ) : (
-                      stat.value
-                    )}
-                  </div>
-                  <p className="text-slate-600 mt-2">{stat.label}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
