@@ -6,7 +6,7 @@ Disallow: /plan
 Disallow: /quiz
 
 # Host
-Host: https://dronecareerpro.com
+Host: https://www.dronecareerpro.com
 
 # Sitemaps
-Sitemap: https://dronecareerpro.com/sitemap.xml
+Sitemap: https://www.dronecareerpro.com/sitemap.xml
