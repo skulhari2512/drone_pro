@@ -1,4 +1,7 @@
 import '../styles/globals.css'
+import Header from '../components/layout/Header'
+import Footer from '../components/layout/Footer'
+
 import { Toaster } from '../components/ui/toaster'
 
 function MyApp({ Component, pageProps }) {
@@ -7,10 +10,11 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <Header />
       {getLayout(<Component {...pageProps} />)}
+      <Footer />
       <Toaster />
     </>
   )
 }
-
 export default MyApp
