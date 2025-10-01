@@ -1,5 +1,5 @@
 module.exports = {
-    siteUrl: 'https://dronecareerpro.com',
+    siteUrl: 'https://www.dronecareerpro.com',
     generateRobotsTxt: true,
     generateIndexSitemap: false,
     exclude: ['/api/*', '/plan', '/quiz'],
