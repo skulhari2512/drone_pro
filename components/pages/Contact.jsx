@@ -132,7 +132,7 @@ const handleSubmit = async (e) => {
     console.error('Error submitting form:', error);
     toast({
       title: "Error",
-      description: error.message || "Failed to submit form. Please try again or contact us directly at cooper@dronecareerpro.au",
+      description: error.message || "Failed to submit form. Please try again or contact us directly at cooper@dronecareerpro.com",
       variant: "destructive",
     });
   } finally {
@@ -398,10 +398,10 @@ const handleSubmit = async (e) => {
                   <div>
                     <p className="font-bold text-slate-900 mb-1">Email</p>
                     <a 
-                      href="mailto:cooper@dronecareerpro.au" 
+                      href="mailto:cooper@dronecareerpro.com" 
                       className="text-slate-600 hover:text-blue-600 transition-colors"
                     >
-                      cooper@dronecareerpro.au
+                      cooper@dronecareerpro.com
                     </a>
                   </div>
                 </div>
