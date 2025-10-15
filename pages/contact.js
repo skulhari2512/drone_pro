@@ -9,9 +9,9 @@ export default function ContactPage() {
       <NextSeo
         title="Contact Us | Drone Career Pro"
         description="Get in touch with our expert team. Start your drone pilot journey today with personalized guidance and support."
-        canonical="https://dronecareerpro.au/contact"
+        canonical="https://dronecareerpro.com/contact"
         openGraph={{
-          url: 'https://dronecareerpro.au/contact',
+          url: 'https://dronecareerpro.com/contact',
           title: 'Contact Us | Drone Career Pro',
           description: 'Ready to start your drone career? Contact our expert team for personalized guidance on training and certification.',
           site_name: 'Drone Career Pro',

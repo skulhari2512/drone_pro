@@ -7,9 +7,9 @@ export default function FAQPage() {
       <NextSeo
         title="Frequently Asked Questions | Drone Career Pro"
         description="Get answers to common questions about drone pilot training, certification, costs, equipment, and career opportunities in Australia."
-        canonical="https://dronecareerpro.au/faq"
+        canonical="https://dronecareerpro.com/faq"
         openGraph={{
-          url: 'https://dronecareerpro.au/faq',
+          url: 'https://dronecareerpro.com/faq',
           title: 'FAQ - Drone Training Questions Answered | Drone Career Pro',
           description: 'Find answers to all your questions about becoming a commercial drone pilot in Australia.',
           site_name: 'Drone Career Pro',
