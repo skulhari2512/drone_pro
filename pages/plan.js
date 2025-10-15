@@ -9,10 +9,10 @@ export default function PlanPage() {
             <NextSeo
                 title="Your Personalized Drone Career Plan | Drone Career Pro"
                 description="View your customized drone training pathway and recommended courses based on your career assessment results."
-                canonical="https://dronecareerpro.au/plan"
+                canonical="https://dronecareerpro.com/plan"
                 noindex={true} // Don't index personalized plan pages
                 openGraph={{
-                    url: 'https://dronecareerpro.au/plan',
+                    url: 'https://dronecareerpro.com/plan',
                     title: 'Your Personalized Drone Career Plan',
                     description: 'Your customized training pathway to launch your drone career.',
                     site_name: 'Drone Career Pro',

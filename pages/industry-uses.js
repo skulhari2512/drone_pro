@@ -9,9 +9,9 @@ export default function IndustryUsesPage() {
       <NextSeo
         title="Industry Applications | Drone Career Pro"
         description="Explore lucrative drone career opportunities across industries. Construction, agriculture, mining, inspections - earning $75-$400/hour."
-        canonical="https://dronecareerpro.au/industry-uses"
+        canonical="https://dronecareerpro.com/industry-uses"
         openGraph={{
-          url: 'https://dronecareerpro.au/industry-uses',
+          url: 'https://dronecareerpro.com/industry-uses',
           title: 'Drone Industry Applications & Careers | Drone Career Pro',
           description: 'Discover high-paying drone pilot opportunities in construction, agriculture, mining, and more.',
           site_name: 'Drone Career Pro',

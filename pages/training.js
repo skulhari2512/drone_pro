@@ -8,9 +8,9 @@ export default function TrainingPage() {
       <NextSeo
         title="Training & Certification | Drone Career Pro"
         description="CASA-approved drone pilot training courses. RePL, ReOC, and RPA certification options. Online and in-person training available."
-        canonical="https://dronecareerpro.au/training"
+        canonical="https://dronecareerpro.com/training"
         openGraph={{
-          url: 'https://dronecareerpro.au/training',
+          url: 'https://dronecareerpro.com/training',
           title: 'Drone Pilot Training & Certification | Drone Career Pro',
           description: 'Get certified with CASA-approved drone training. Multiple pathways from beginner to business operations.',
           site_name: 'Drone Career Pro',

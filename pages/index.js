@@ -9,14 +9,14 @@ export default function HomePage({ data }) {
       <NextSeo
         title="Professional Drone Training & Licensing | Drone Career Pro"
         description="Get your commercial drone pilot licence with Australia's leading CASA-approved training provider. Expert instructors, hands-on training, nationwide network."
-        canonical="https://dronecareerpro.au/"
+        canonical="https://dronecareerpro.com/"
         openGraph={{
-          url: 'https://dronecareerpro.au/',
+          url: 'https://dronecareerpro.com/',
           title: 'Professional Drone Training & Licensing | Drone Career Pro',
           description: 'Transform your career with professional drone certification. Get licensed, get trained, get flying with Australia\'s premier drone training platform.',
           images: [
             {
-              url: 'https://dronecareerpro.au/og-image.jpg',
+              url: 'https://dronecareerpro.com/og-image.jpg',
               width: 1200,
               height: 630,
               alt: 'Drone Career Pro - Professional Drone Training',
