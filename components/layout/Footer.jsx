@@ -1,122 +1,183 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Mail, Phone, MapPin } from 'lucide-react';
-import { Button } from '../ui/button';
+import { useState, useEffect, useRef } from 'react';
+import { MessageCircle, X, Send } from 'lucide-react';
 
-const Footer = () => {
+export default function VoiceflowChat() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [userId] = useState(() => `user_${Date.now()}`);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  useEffect(() => {
+    if (isOpen && messages.length === 0) {
+      launchConversation();
+    }
+  }, [isOpen]);
+
+  const launchConversation = async () => {
+    try {
+      const response = await fetch('/api/voiceflow', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: null,
+          userId: userId,
+          action: { type: 'launch' }
+        })
+      });
+
+      const data = await response.json();
+      processResponse(data);
+    } catch (error) {
+      console.error('Failed to launch conversation:', error);
+    }
+  };
+
+  const processResponse = (data) => {
+    if (data && Array.isArray(data)) {
+      const newMessages = data
+        .filter(item => item.type === 'text' || item.type === 'speak')
+        .map(item => ({
+          text: item.payload?.message || item.payload?.text || '',
+          isBot: true
+        }));
+      
+      setMessages(prev => [...prev, ...newMessages]);
+    }
+  };
+
+  const sendMessage = async (e) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
+
+    const userMessage = input.trim();
+    setInput('');
+    setMessages(prev => [...prev, { text: userMessage, isBot: false }]);
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/voiceflow', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: userMessage,
+          userId: userId
+        })
+      });
+
+      const data = await response.json();
+      processResponse(data);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setMessages(prev => [...prev, { 
+        text: 'Sorry, something went wrong. Please try again.', 
+        isBot: true 
+      }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <footer className="bg-slate-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="relative w-10 h-10">
-                <Image
-                  src="/images/dronelogo.png"
-                  alt="Drone Career Pro Logo"
-                  fill
-                  className="object-contain"
-                  sizes="40px"
-                  priority
-                />
+    <>
+      {/* Chat Button */}
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="fixed bottom-20 right-6 bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:bg-blue-700 transition-all duration-300 hover:scale-110 z-50"
+          aria-label="Open chat"
+        >
+          <MessageCircle className="w-6 h-6" />
+        </button>
+      )}
+
+      {/* Chat Window */}
+      {isOpen && (
+        <div className="fixed bottom-20 right-6 w-96 h-[600px] bg-white rounded-2xl shadow-2xl flex flex-col z-50 border border-slate-200">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 rounded-t-2xl flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                <MessageCircle className="w-5 h-5" />
               </div>
-              <span className="text-xl font-bold">Drone Career Pro</span>
-            </Link>
-            <p className="text-slate-300 mb-6 max-w-md">
-              Australia's premier drone training platform. Transform your career with professional drone certification and industry expertise.
-            </p>
-            <div className="space-y-2">
-              <div className="flex items-center space-x-2 text-slate-300">
-                <Mail className="w-4 h-4" />
-                <span>cooper@dronecareerpro.com</span>
-              </div>
-              <div className="flex items-center space-x-2 text-slate-300">
-                <Phone className="w-4 h-4" />
-              </div>
-              <div className="flex items-center space-x-2 text-slate-300">
-                <MapPin className="w-4 h-4" />
-                <span>Nationwide Training Network</span>
+              <div>
+                <h3 className="font-semibold">Drone Career Assistant</h3>
+                <p className="text-xs text-blue-100">We're here to help!</p>
               </div>
             </div>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="text-white hover:bg-white/20 rounded-full p-1 transition-colors"
+              aria-label="Close chat"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/how-it-works" className="text-slate-300 hover:text-white transition-colors duration-200">
-                  How It Works
-                </Link>
-              </li>
-              <li>
-                <Link href="/industry-uses" className="text-slate-300 hover:text-white transition-colors duration-200">
-                  Industries
-                </Link>
-              </li>
-              <li>
-                <Link href="/training" className="text-slate-300 hover:text-white transition-colors duration-200">
-                  Training
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="text-slate-300 hover:text-white transition-colors duration-200">
-                  FAQ
-                </Link>
-              </li>
-            </ul>
+          {/* Messages */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50">
+            {messages.map((msg, idx) => (
+              <div
+                key={idx}
+                className={`flex ${msg.isBot ? 'justify-start' : 'justify-end'}`}
+              >
+                <div
+                  className={`max-w-[80%] rounded-2xl px-4 py-2 ${
+                    msg.isBot
+                      ? 'bg-white text-slate-800 shadow-sm'
+                      : 'bg-blue-600 text-white'
+                  }`}
+                >
+                  <p className="text-sm">{msg.text}</p>
+                </div>
+              </div>
+            ))}
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-white rounded-2xl px-4 py-2 shadow-sm">
+                  <div className="flex space-x-2">
+                    <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                    <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                    <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                  </div>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
           </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Training</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/quiz" className="text-slate-300 hover:text-white transition-colors duration-200">
-                  Career Assessment
-                </Link>
-              </li>
-              <li>
-                <span className="text-slate-300">RePL Certification</span>
-              </li>
-              <li>
-                <span className="text-slate-300">ReOC Business</span>
-              </li>
-              <li>
-                <span className="text-slate-300">Industry Specialization</span>
-              </li>
-            </ul>
-          </div>
+          {/* Input */}
+          <form onSubmit={sendMessage} className="p-4 border-t border-slate-200 bg-white rounded-b-2xl">
+            <div className="flex space-x-2">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type your message..."
+                disabled={isLoading}
+                className="flex-1 px-4 py-2 border border-slate-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-slate-100"
+              />
+              <button
+                type="submit"
+                disabled={isLoading || !input.trim()}
+                className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Send message"
+              >
+                <Send className="w-5 h-5" />
+              </button>
+            </div>
+          </form>
         </div>
-
-        <div className="border-t border-slate-800 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-slate-400 text-sm mb-4 md:mb-0">
-              © 2025 Drone Career Pro. All rights reserved.
-            </div>
-            <div className="flex space-x-6 text-sm text-slate-400">
-              <a href="#" className="hover:text-white transition-colors duration-200">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors duration-200">Terms of Service</a>
-              <a href="#" className="hover:text-white transition-colors duration-200">CASA Compliance</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-blue-500/90 to-purple-900/90 backdrop-blur-md border-t border-white/30 py-3 z-50 shadow-xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-3">
-            <div className="text-center md:text-left mb-2 md:mb-0">
-              <h3 className="text-lg font-bold text-white">Stop dreaming, start earning</h3>
-              <p className="text-blue-100/95 text-sm">While others wait, you fly. Get your licence now and lead in Australia's next wave of drone innovation</p>
-            </div>
-            <Button href="/quiz" className="bg-white text-blue-600 font-semibold px-5 py-2.5 rounded-xl hover:bg-blue-50 transition-all duration-300 hover:scale-105 shadow-lg">
-              Start Your Journey →
-            </Button>
-          </div>
-        </div>
-      </div>
-    </footer>
+      )}
+    </>
   );
-};
-
-export default Footer;
+}
