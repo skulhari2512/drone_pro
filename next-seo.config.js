@@ -60,7 +60,7 @@ export default {
         // Google Site Verification - ADD YOUR CODE AFTER SETTING UP SEARCH CONSOLE
         {
             name: 'google-site-verification',
-            content: 'PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE'
+            content: 'RhaLz1yrCP4U-1kG9c32AjF1DCZdsbNQX3Elt3DUqHM'
         },
         // Bing Verification - ADD YOUR CODE AFTER SETTING UP BING WEBMASTER
         {

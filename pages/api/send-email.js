@@ -12,7 +12,7 @@ export default async function handler(req, res) {
         if (type === 'contact') {
             // Format and send contact email
             const emailContent = {
-                to: process.env.ADMIN_EMAIL || 'cooper@dronecareerpro.com',
+                to: process.env.ADMIN_EMAIL ||'cooper@dronecareerpro.com',
                 subject: `New Contact Form Submission from ${data.name}`,
                 html: `
           <h2>New Contact Form Submission</h2>
