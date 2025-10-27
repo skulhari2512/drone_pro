@@ -1,35 +1,35 @@
-// components/pages/Home.jsx
+// components/pages/Home.jsx - OPTIMIZED FOR PERFORMANCE & SEO
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
-import { ArrowRight, TrendingUp, Users, Award, DollarSign } from 'lucide-react';
-import AnimatedCounter from '../Enhanced/AnimatedCounter';
+import { ArrowRight } from 'lucide-react';
 
 const Home = () => {
   const heroVideo = '/videos/hero-video.mp4';
 
-const features = [
-  {
-    title: "Professional Assessment",
-    description: "Get matched with your ideal drone career path through our comprehensive assessment",
-    image: "/images/professional-drone-career-assessment-australia.jpg"  // Changed from dimg21.jpg
-  },
-  {
-    title: "Industry Specialisation", 
-    description: "Specialise in high-demand sectors like construction, agriculture, and asset inspection",
-    image: "/images/drone-industry-specialization-training-australia.jpg"  // Changed from dimg14.jpg
-  },
-  {
-    title: "Certification Pathways",
-    description: "Clear progression pathway from RPA accreditation to RePL and ReOC business certification", 
-    image: "/images/drone-certification-pathways-australia.jpg"  // Changed from dimg32.jpg
-  }
-];
+  const features = [
+    {
+      title: "Professional Assessment",
+      description: "Get matched with your ideal drone career path through our comprehensive assessment",
+      image: "/images/professional-drone-career-assessment-australia.jpg"
+    },
+    {
+      title: "Industry Specialisation", 
+      description: "Specialise in high-demand sectors like construction, agriculture, and asset inspection",
+      image: "/images/drone-industry-specialization-training-australia.jpg"
+    },
+    {
+      title: "Certification Pathways",
+      description: "Clear progression pathway from RPA accreditation to RePL and ReOC business certification", 
+      image: "/images/drone-certification-pathways-australia.jpg"
+    }
+  ];
 
   return (
     <div className="min-h-screen">
+      {/* Hero Section - OPTIMIZED */}
       <section className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden bg-gray-900">
         <div className="absolute inset-0 w-full h-full">
           <video
@@ -37,7 +37,9 @@ const features = [
             loop
             muted
             playsInline
+            preload="auto"
             className="w-full h-full object-cover"
+            aria-label="Drone flying hero video"
           >
             <source src={heroVideo} type="video/mp4" />
           </video>
@@ -49,14 +51,14 @@ const features = [
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: "easeOut" }} // FASTER: 0.8s → 0.5s
             className="space-y-6"
           >
             <motion.h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.1 }} // FASTER & REDUCED DELAY
             >
               Stop dreaming, Start earning
             </motion.h1>
@@ -65,7 +67,7 @@ const features = [
               className="text-lg sm:text-xl md:text-2xl font-normal text-white/90 leading-relaxed max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.2 }} // FASTER & REDUCED DELAY
             >
               While others wait, you fly. Get your licence now and lead in Australia's next wave of drone innovation
             </motion.p>
@@ -74,7 +76,7 @@ const features = [
               className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.3 }} // FASTER & REDUCED DELAY
             >
               <Button
                 href="/quiz"
@@ -98,13 +100,13 @@ const features = [
         </div>
       </section>
 
-
+      {/* Features Section - OPTIMIZED */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }} // REDUCED: y:20 → y:15
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }} // FASTER: 0.6s → 0.4s
             viewport={{ once: true }}
             className="text-center mb-16"
           >
@@ -120,20 +122,25 @@ const features = [
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }} // REDUCED: y:20 → y:15
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
+                transition={{ 
+                  duration: 0.4, // FASTER: 0.6s → 0.4s
+                  delay: index * 0.1 // REDUCED: 0.2s → 0.1s
+                }}
+                viewport={{ once: true, margin: "-50px" }} // TRIGGER EARLIER
                 className="group"
               >
                 <Card className="overflow-hidden hover:shadow-lg transition-all duration-500 border-0 rounded-3xl group-hover:-translate-y-1 shadow-md bg-white">
                   <div className="aspect-video relative overflow-hidden bg-slate-50">
                     <Image
                       src={feature.image}
-                      alt={feature.title}
+                      alt={`${feature.title} - Drone Career Pro training feature`}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      loading={index === 0 ? "eager" : "lazy"} // FIRST IMAGE EAGER
+                      quality={80}
                     />
                   </div>
                   <CardContent className="p-8 bg-white">
@@ -147,15 +154,16 @@ const features = [
         </div>
       </section>
 
+      {/* CTA Section - OPTIMIZED */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }} // REDUCED: y:20 → y:15
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }} // FASTER: 0.6s → 0.4s
             viewport={{ once: true }}
             className="text-center"
           >

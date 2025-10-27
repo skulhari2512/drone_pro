@@ -1,4 +1,4 @@
-// components/pages/HowItWorks.jsx
+// components/pages/HowItWorks.jsx - OPTIMIZED FOR PERFORMANCE
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -19,16 +19,17 @@ const HowItWorks = () => {
 
   return (
     <div className="min-h-screen bg-white font-sans">
-      {/* Premium Hero Section */}
+      {/* Premium Hero Section - OPTIMIZED */}
       <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <Image
             src={stepImages[0]}
-            alt="How it works hero"
+            alt="Professional drone pilot training process - How it works"
             fill
             className="object-cover"
             priority
             sizes="100vw"
+            quality={85}
           />
         </div>
 
@@ -38,7 +39,7 @@ const HowItWorks = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }} // FASTER: 0.8s → 0.5s
           >
             <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               {howItWorksData.title}
@@ -50,31 +51,36 @@ const HowItWorks = () => {
         </div>
       </section>
 
-      {/* Step by Step Process */}
+      {/* Step by Step Process - OPTIMIZED ANIMATIONS */}
       <section className="pb-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" style={{ paddingTop: '50px' }}>
           <div className="space-y-24">
             {howItWorksData.sections.map((step, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }} // REDUCED: y:40 → y:20
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                transition={{ 
+                  duration: 0.4, // FASTER: 0.8s → 0.4s
+                  delay: index * 0.05 // REDUCED: 0.1s → 0.05s
+                }}
+                viewport={{ once: true, margin: "-50px" }} // TRIGGER EARLIER
                 className={`flex flex-col lg:flex-row items-center gap-16 ${
                   index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                 }`}
               >
-                {/* Image */}
+                {/* Image - OPTIMIZED */}
                 <div className="lg:w-1/2">
                   <div className="relative">
                     <div className="relative w-full h-80 lg:h-96 rounded-2xl shadow-lg overflow-hidden">
                       <Image
                         src={stepImages[index + 1] || stepImages[index]}
-                        alt={step.heading}
+                        alt={`Step ${index + 1}: ${step.heading} - Drone training process`}
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 50vw"
+                        loading={index === 0 ? "eager" : "lazy"} // First image eager, rest lazy
+                        quality={80}
                       />
                     </div>
                     <div className="absolute -top-4 -left-4 w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
@@ -115,16 +121,16 @@ const HowItWorks = () => {
         </div>
       </section>
 
-      {/* Enhanced Next Steps CTA */}
+      {/* Enhanced Next Steps CTA - OPTIMIZED */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-900 to-blue-900"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }} // REDUCED: y:30 → y:20
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }} // FASTER: 0.8s → 0.5s
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -157,13 +163,13 @@ const HowItWorks = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ Section - OPTIMIZED */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }} // REDUCED: y:20 → y:15
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }} // FASTER: 0.6s → 0.4s
             viewport={{ once: true }}
             className="text-center mb-12"
           >
@@ -179,10 +185,13 @@ const HowItWorks = () => {
             {howItWorksData.faq.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }} // REDUCED: y:20 → y:15
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                transition={{ 
+                  duration: 0.4, // FASTER: 0.6s → 0.4s
+                  delay: index * 0.05 // REDUCED: 0.1s → 0.05s
+                }}
+                viewport={{ once: true, margin: "-30px" }} // TRIGGER EARLIER
               >
                 <Card className="border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
                   <CardContent className="p-8">

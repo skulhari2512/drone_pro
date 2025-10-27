@@ -2,27 +2,15 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /plan
-Disallow: /quiz
 Disallow: /admin/
-Disallow: /dashboard/
-Disallow: /*?*
-Disallow: /*.json$
-Disallow: /*.xml$
 
 # Googlebot
 User-agent: Googlebot
 Allow: /
-Disallow: /api/
-Disallow: /admin/
-Disallow: /dashboard/
 
 # Bingbot
 User-agent: Bingbot
 Allow: /
-Disallow: /api/
-Disallow: /admin/
-Disallow: /dashboard/
 
 # Host
 Host: https://www.dronecareerpro.com
