@@ -1,30 +1,36 @@
 // components/VoiceflowChat.js
 import { useEffect } from 'react'
 
-const VoiceflowChat = () => {
+export default function VoiceflowChat() {
   useEffect(() => {
-    // Load Voiceflow chat widget script
+    // Load Voiceflow chat widget
     const script = document.createElement('script')
     script.type = 'text/javascript'
     script.onload = function() {
-      window.voiceflow.chat.load({
-        verify: { projectID: '6720e59340606e4a546ac60e' },
-        url: 'https://general-runtime.voiceflow.com',
-        versionID: 'production'
-      })
+      if (window.voiceflow && window.voiceflow.chat) {
+        window.voiceflow.chat.load({
+          verify: { projectID: '68ff12c2fab11e098f3328e2' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          voice: {
+            url: "https://runtime-api.voiceflow.com"
+          }
+        })
+      }
     }
-    script.src = 'https://cdn.voiceflow.com/widget/bundle.mjs'
+    script.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"
+    
+    // Append script to body
     document.body.appendChild(script)
 
-    // Cleanup
+    // Cleanup function
     return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script)
+      // Remove script when component unmounts
+      if (script.parentNode) {
+        script.parentNode.removeChild(script)
       }
     }
   }, [])
 
   return null // This component doesn't render anything visible
 }
-
-export default VoiceflowChat
