@@ -8,7 +8,7 @@ import { Toaster } from '../components/ui/toaster'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { DefaultSeo } from 'next-seo'
 import SEO from '../next-seo.config'
-import VoiceflowChat from '../components/VoiceflowChat' // ADD THIS
+import VoiceflowChat from '../components/VoiceflowChat'
 
 // Lazy load Footer
 const Footer = dynamic(() => import('../components/layout/Footer'), {
@@ -29,17 +29,22 @@ function MyApp({ Component, pageProps }) {
     return () => router.events.off('routeChangeComplete', handleRouteChange)
   }, [router.events])
 
-  const getLayout = Component.getLayout || ((page) => page)
+  // Get custom layout or use default layout with Header/Footer
+  const getLayout = Component.getLayout || ((page) => (
+    <>
+      <Header />
+      <main className="min-h-screen">
+        {page}
+      </main>
+      <Footer />
+    </>
+  ))
 
   return (
     <>
       <DefaultSeo {...SEO} />
-      <Header />
-      <main className="min-h-screen">
-        {getLayout(<Component {...pageProps} />)}
-      </main>
-      <Footer />
-      <VoiceflowChat /> {/* ADD THIS */}
+      {getLayout(<Component {...pageProps} />)}
+      <VoiceflowChat />
       <Toaster />
       <SpeedInsights />
     </>
