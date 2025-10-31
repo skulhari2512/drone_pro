@@ -9,10 +9,13 @@ export default function Document() {
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://cdn.voiceflow.com" />
+        <link rel="dns-prefetch" href="https://general-runtime.voiceflow.com" />
         
         {/* Preconnect for Faster Loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.voiceflow.com" />
+        <link rel="preconnect" href="https://general-runtime.voiceflow.com" />
         
         {/* Optimized Font Loading */}
         <link 
@@ -120,7 +123,7 @@ export default function Document() {
         <Main />
         <NextScript />
         
-        {/* Voiceflow Chat Widget */}
+        {/* Voiceflow Chat Widget - Optimized & Customized */}
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
@@ -131,13 +134,87 @@ export default function Document() {
                   window.voiceflow.chat.load({
                     verify: { projectID: '68ff12c2fab11e098f3328e3' },
                     url: 'https://general-runtime.voiceflow.com',
-                    versionID: 'production'
+                    versionID: 'production',
+                    launch: {
+                      event: {
+                        type: 'launch'
+                      }
+                    },
+                    render: {
+                      mode: 'embedded',
+                      target: document.body
+                    },
+                    autostart: false,
+                    assistant: {
+                      title: 'Drone Career Assistant',
+                      description: 'How can I help you today?',
+                      avatar: 'https://www.dronecareerpro.com/logo.png',
+                      stylesheet: 'https://www.dronecareerpro.com/voiceflow-custom.css'
+                    }
                   });
                 }
                 v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
                 v.type = "text/javascript";
                 s.parentNode.insertBefore(v, s);
               })(document, 'script');
+            `,
+          }}
+        />
+
+        {/* Custom Voiceflow Styling */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              /* Speed up widget loading animation */
+              #voiceflow-chat {
+                transition: all 0.2s ease-in-out !important;
+              }
+              
+              /* Custom widget styling */
+              .vfrc-widget--launcher {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4) !important;
+              }
+              
+              .vfrc-widget--launcher:hover {
+                transform: scale(1.05) !important;
+                box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6) !important;
+              }
+              
+              /* Header styling */
+              .vfrc-header {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+              }
+              
+              /* Message bubbles */
+              .vfrc-message--user {
+                background: #667eea !important;
+              }
+              
+              .vfrc-message--agent {
+                background: #f3f4f6 !important;
+                color: #1f2937 !important;
+              }
+              
+              /* Input field */
+              .vfrc-input {
+                border: 2px solid #e5e7eb !important;
+                border-radius: 24px !important;
+              }
+              
+              .vfrc-input:focus {
+                border-color: #667eea !important;
+                box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+              }
+              
+              /* Send button */
+              .vfrc-button--send {
+                background: #667eea !important;
+              }
+              
+              .vfrc-button--send:hover {
+                background: #764ba2 !important;
+              }
             `,
           }}
         />
