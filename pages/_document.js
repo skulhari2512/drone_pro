@@ -8,6 +8,7 @@ export default function Document() {
         {/* DNS Prefetch for Performance */}
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://cdn.voiceflow.com" />
         
         {/* Preconnect for Faster Loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -118,6 +119,28 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        
+        {/* Voiceflow Chat Widget */}
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(d, t) {
+                var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+                v.onload = function() {
+                  window.voiceflow.chat.load({
+                    verify: { projectID: '68ff12c2fab11e098f3328e3' },
+                    url: 'https://general-runtime.voiceflow.com',
+                    versionID: 'production'
+                  });
+                }
+                v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+                v.type = "text/javascript";
+                s.parentNode.insertBefore(v, s);
+              })(document, 'script');
+            `,
+          }}
+        />
       </body>
     </Html>
   )
