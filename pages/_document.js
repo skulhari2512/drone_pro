@@ -124,42 +124,51 @@ export default function Document() {
         <NextScript />
         
         {/* Voiceflow Chat Widget - Optimized & Customized */}
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(d, t) {
-                var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-                v.onload = function() {
-                  window.voiceflow.chat.load({
-                    verify: { projectID: '68ff12c2fab11e098f3328e3' },
-                    url: 'https://general-runtime.voiceflow.com',
-                    versionID: 'production',
-                    launch: {
-                      event: {
-                        type: 'launch'
-                      }
-                    },
-                    render: {
-                      mode: 'embedded',
-                      target: document.body
-                    },
-                    autostart: false,
-                    assistant: {
-                      title: 'Drone Career Assistant',
-                      description: 'How can I help you today?',
-                      avatar: 'https://www.dronecareerpro.com/logo.png',
-                      stylesheet: 'https://www.dronecareerpro.com/voiceflow-custom.css'
-                    }
-                  });
+       {/* Voiceflow Chat Widget - Optimized & Customized */}
+<script
+  type="text/javascript"
+  dangerouslySetInnerHTML={{
+    __html: `
+      (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '68ff12c2fab11e098f3328e3' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production',
+            launch: {
+              event: {
+                type: 'launch'
+              }
+            },
+            render: {
+              mode: 'embedded',
+              target: document.body
+            },
+            autostart: false,
+            allowDangerousHTML: true,
+            assistant: {
+              title: 'Drone Career Assistant',
+              description: 'How can I help you today?',
+              avatar: 'https://www.dronecareerpro.com/logo.png',
+              extensions: {
+                voice: {
+                  enabled: true,
+                  input: true,
+                  output: true,
+                  autoStart: false
                 }
-                v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-                v.type = "text/javascript";
-                s.parentNode.insertBefore(v, s);
-              })(document, 'script');
-            `,
-          }}
-        />
+              }
+            }
+          });
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+        v.type = "text/javascript";
+        s.parentNode.insertBefore(v, s);
+      })(document, 'script');
+    `,
+  }}
+/>
 
         {/* Custom Voiceflow Styling */}
         <style
