@@ -1,4 +1,4 @@
-// pages/_document.js - OPTIMIZED FOR SEO
+// pages/_document.js - FIXED VOICE INTEGRATION
 import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
@@ -123,52 +123,54 @@ export default function Document() {
         <Main />
         <NextScript />
         
-        {/* Voiceflow Chat Widget - Optimized & Customized */}
-       {/* Voiceflow Chat Widget - Optimized & Customized */}
-<script
-  type="text/javascript"
-  dangerouslySetInnerHTML={{
-    __html: `
-      (function(d, t) {
-        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-        v.onload = function() {
-          window.voiceflow.chat.load({
-            verify: { projectID: '68ff12c2fab11e098f3328e3' },
-            url: 'https://general-runtime.voiceflow.com',
-            versionID: 'production',
-            launch: {
-              event: {
-                type: 'launch'
-              }
-            },
-            render: {
-              mode: 'embedded',
-              target: document.body
-            },
-            autostart: false,
-            allowDangerousHTML: true,
-            assistant: {
-              title: 'Drone Career Assistant',
-              description: 'How can I help you today?',
-              avatar: 'https://www.dronecareerpro.com/logo.png',
-              extensions: {
-                voice: {
-                  enabled: true,
-                  input: true,
-                  output: true,
-                  autoStart: false
+        {/* Voiceflow Chat Widget - FIXED VOICE CONFIGURATION */}
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(d, t) {
+                var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+                v.onload = function() {
+                  window.voiceflow.chat.load({
+                    verify: { projectID: '68ff12c2fab11e098f3328e3' },
+                    url: 'https://general-runtime.voiceflow.com',
+                    versionID: 'production',
+                    launch: {
+                      event: {
+                        type: 'launch'
+                      }
+                    },
+                    render: {
+                      mode: 'embedded',
+                      target: document.body
+                    },
+                    autostart: false,
+                    allowDangerousHTML: true,
+                    assistant: {
+                      title: 'Drone Career Assistant',
+                      description: 'How can I help you today?',
+                      avatar: 'https://www.dronecareerpro.com/logo.png',
+                      // ✅ FIXED: Use extensions array, not object
+                      extensions: ['microphone'],
+                      // ✅ FIXED: Add speech configuration
+                      speech: {
+                        enabled: true,
+                        input: true,
+                        output: true
+                      }
+                    }
+                  });
+                  
+                  // ✅ Log when widget loads successfully
+                  console.log('Voiceflow widget loaded with voice support');
                 }
-              }
-            }
-          });
-        }
-        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-        v.type = "text/javascript";
-        s.parentNode.insertBefore(v, s);
-      })(document, 'script');
-    `,
-  }}
-/>
+                v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+                v.type = "text/javascript";
+                s.parentNode.insertBefore(v, s);
+              })(document, 'script');
+            `,
+          }}
+        />
 
         {/* Custom Voiceflow Styling */}
         <style
@@ -223,6 +225,25 @@ export default function Document() {
               
               .vfrc-button--send:hover {
                 background: #764ba2 !important;
+              }
+              
+              /* ✅ Voice/Microphone button styling */
+              .vfrc-button--microphone {
+                background: #667eea !important;
+              }
+              
+              .vfrc-button--microphone:hover {
+                background: #764ba2 !important;
+              }
+              
+              .vfrc-button--microphone.active {
+                background: #ef4444 !important;
+                animation: pulse 1.5s ease-in-out infinite;
+              }
+              
+              @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.7; }
               }
             `,
           }}
