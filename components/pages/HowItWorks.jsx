@@ -18,7 +18,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white font-sans">
+    <div className="bg-white font-sans">
       {/* Premium Hero Section - OPTIMIZED */}
       <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
@@ -39,7 +39,7 @@ const HowItWorks = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }} // FASTER: 0.8s → 0.5s
+            transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               {howItWorksData.title}
@@ -58,13 +58,13 @@ const HowItWorks = () => {
             {howItWorksData.sections.map((step, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }} // REDUCED: y:40 → y:20
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ 
-                  duration: 0.4, // FASTER: 0.8s → 0.4s
-                  delay: index * 0.05 // REDUCED: 0.1s → 0.05s
+                  duration: 0.4,
+                  delay: index * 0.05
                 }}
-                viewport={{ once: true, margin: "-50px" }} // TRIGGER EARLIER
+                viewport={{ once: true, margin: "-50px" }}
                 className={`flex flex-col lg:flex-row items-center gap-16 ${
                   index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                 }`}
@@ -79,7 +79,7 @@ const HowItWorks = () => {
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 50vw"
-                        loading={index === 0 ? "eager" : "lazy"} // First image eager, rest lazy
+                        loading={index === 0 ? "eager" : "lazy"}
                         quality={80}
                       />
                     </div>
@@ -128,9 +128,9 @@ const HowItWorks = () => {
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }} // REDUCED: y:30 → y:20
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }} // FASTER: 0.8s → 0.5s
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -167,9 +167,9 @@ const HowItWorks = () => {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 15 }} // REDUCED: y:20 → y:15
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }} // FASTER: 0.6s → 0.4s
+            transition={{ duration: 0.4 }}
             viewport={{ once: true }}
             className="text-center mb-12"
           >
@@ -185,13 +185,13 @@ const HowItWorks = () => {
             {howItWorksData.faq.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 15 }} // REDUCED: y:20 → y:15
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ 
-                  duration: 0.4, // FASTER: 0.6s → 0.4s
-                  delay: index * 0.05 // REDUCED: 0.1s → 0.05s
+                  duration: 0.4,
+                  delay: index * 0.05
                 }}
-                viewport={{ once: true, margin: "-30px" }} // TRIGGER EARLIER
+                viewport={{ once: true, margin: "-30px" }}
               >
                 <Card className="border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
                   <CardContent className="p-8">
